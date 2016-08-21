@@ -1,6 +1,5 @@
 language: node_js
- node_js:
-   - "2.15.8"
+ 
  env:
      global:
          - secure: "bartvitaly"
