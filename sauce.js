@@ -42,9 +42,9 @@ exports.config = {
 	jasmineNodeOpts : {
 		showColors : true,
 		defaultTimeoutInterval : 200000,
-		getPageTimeout : 20000,
+		getPageTimeout : 200000,
 		isVerbose : true,
 		includeStackTrace : true,
-		allScriptsTimeout : 20000
+		allScriptsTimeout : 200000
 	}
 };

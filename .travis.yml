@@ -20,3 +20,4 @@ language: node_js
    - npm install mkdirp
    - npm install -g appium@1.4.16
    
+ script: protractor sauce.js
