@@ -4,14 +4,14 @@ addons:
 before_script: 
   - "npm install -g grunt-cli"
   - "npm install -g bower"
-  - "npm install mkdirp"
-  - "npm install chromedriver"
-  - "npm install protractor"
-  - "npm install protractor-html-screenshot-reporter"
-  - "npm install wd"
-  - "npm install wd-bridge"
-  - "npm install jasmine-reporters"
-  - "npm install mkdirp"
+  - "npm install -g mkdirp"
+  - "npm install -g chromedriver"
+  - "npm install -g protractor"
+  - "npm install -g protractor-html-screenshot-reporter"
+  - "npm install -g wd"
+  - "npm install -g wd-bridge"
+  - "npm install -g jasmine-reporters"
+  - "npm install -g mkdirp"
   - "npm install -g appium@1.4.16"
 env: 
   global: 
