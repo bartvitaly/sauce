@@ -4,7 +4,6 @@ addons:
 before_script: 
   - "npm install -g grunt-cli"
   - "npm install -g bower"
-  - "bower install"
   - "npm install mkdirp"
   - "npm install chromedriver"
   - "npm install protractor"
