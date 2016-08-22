@@ -13,6 +13,7 @@ before_script:
   - "npm install -g jasmine-reporters"
   - "npm install -g mkdirp"
   - "npm install -g appium@1.4.16"
+  - "webdriver-manager update"
 env: 
   global: 
     - 
