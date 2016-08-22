@@ -1,22 +1,27 @@
+--- 
+addons: 
+  sauce_connect: true
+before_script: 
+  - "npm install -g grunt-cli"
+  - "npm install -g bower"
+  - "bower install"
+  - "npm install mkdirp"
+  - "npm install chromedriver"
+  - "npm install protractor"
+  - "npm install protractor-html-screenshot-reporter"
+  - "npm install wd"
+  - "npm install wd-bridge"
+  - "npm install jasmine-reporters"
+  - "npm install mkdirp"
+  - "npm install -g appium@1.4.16"
+env: 
+  global: 
+    - 
+      secure: bartvitaly
+    - 
+      secure: 96fe819c-b6e1-472f-9e98-5793cacb1d62
 language: node_js
- 
- env:
-     global:
-         - secure: "bartvitaly"
-         - secure: "96fe819c-b6e1-472f-9e98-5793cacb1d62"
-
- before_script:
-   - npm install -g grunt-cli
-   - npm install -g bower
-   - bower install
-   - npm install mkdirp
-   - npm install chromedriver
-   - npm install protractor
-   - npm install protractor-html-screenshot-reporter
-   - npm install wd
-   - npm install wd-bridge
-   - npm install jasmine-reporters
-   - npm install mkdirp
-   - npm install -g appium@1.4.16
-   
- script: protractor sauce.js
+node_js: 
+  - "4"
+script: 
+  - "protractor sauce.js"
