@@ -10,6 +10,7 @@ before_install:
   - "unzip chromedriver_linux64_26.0.1383.0.zip"
   - "cd ../.."
   - "export PATH=../tmp/bin:$PATH"
+  - "sudo apt-get install google-chrome-stable"
 before_script: 
   - "npm install -g grunt-cli"
   - "npm install -g bower"
