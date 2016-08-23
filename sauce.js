@@ -19,6 +19,7 @@ exports.config = {
 	},
 
 	framework : 'jasmine',
+	
 	specs : [ 'test.js' ],
 
 	baseUrl : 'https://release1.viralstyle.com',
