@@ -19,6 +19,8 @@ before_script:
   - "npm install -g mkdirp"
   - "npm install -g appium@1.4.16"
   - "npm install -g chrome"
+  - "npm install mkdirp"
+  - "npm install underscore"
   - "webdriver-manager update"
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
