@@ -21,6 +21,7 @@ before_script:
   - "npm install -g chrome"
   - "npm install mkdirp"
   - "npm install underscore"
+  - "npm install android"
   - "webdriver-manager update"
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
