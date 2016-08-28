@@ -31,9 +31,9 @@ before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - "sleep 3"
-  - "echo no | android create avd --force -n test -t android-22 --abi x86"
+  - "cd android-sdk-linux/tools"
+  - "echo no | ./android create avd --force -n test -t android-22 --abi x86"
   - "emulator -avd test -no-skin -no-audio -no-window &"
-  - android-wait-for-emulator
   - "adb shell input keyevent 82 &"
   - appium
 dist: trusty
