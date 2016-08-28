@@ -1,21 +1,21 @@
 --- 
 addons: 
-  android: ~
+  android: true
   artifacts: true
   sauce_connect: true
 before_install: 
-  - "sudo apt-get install libxss1 libappindicator1 libindicator7"
-  - "wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-  - "sudo apt-get install -f"
-  - "sudo dpkg -i google-chrome*.deb"
   - "sudo apt-get install openjdk-7-jdk"
   - "wget http://dl.google.com/android/android-sdk_r24.2-linux.tgz"
   - "tar -xvf android-sdk_r24.2-linux.tgz"
   - "cd android-sdk-linux/tools"
-  - "./android list targets"
-  - "echo no | ./android create avd --force -n test -t android-22 --abi x86"
-  - "./emulator -avd test -no-skin -no-audio -no-window &"
-before_script: 
+  - "( while [ 1 ]; do sleep 5; echo y; done ) | ./android update sdk --no-ui -t 1,2,3,7,32,65,119,143,153,154,168"
+  - "cd .."
+  - "pwd"
+  - "ls -la"
+  - "cd .."
+  - "pwd"
+  - "ls -la"
+before_script:
   - "cd ~"
   - "npm install -g chromedriver"
   - "npm install -g protractor"
