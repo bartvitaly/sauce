@@ -17,10 +17,9 @@ before_install:
   - "wget http://dl.google.com/android/android-sdk_r24.2-linux.tgz"
   - "tar -xvf android-sdk_r24.2-linux.tgz"
   - "cd android-sdk-linux/tools"
-  - "( while [ 1 ]; do sleep 5; echo y; done ) | ./android update sdk --no-ui"
+  - "( while [ 1 ]; do sleep 5; echo y; done ) | ./android update sdk --no-ui --filter android-22,platform-tools,build-tools,tools,extra-android-support"
   - "export PATH=${PATH}:$HOME/sdk/android-sdk-linux/platform-tools:$HOME/sdk/android-sdk-linux/tools:$HOME/sdk/android-sdk-linux/build-tools/22.0.1/"
-before_script: 
-  - "npm install -g grunt-cli"
+before_script:
   - "npm install -g bower"
   - "npm install -g chromedriver"
   - "npm install -g protractor"
