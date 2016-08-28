@@ -11,8 +11,8 @@ before_install:
   - "( while [ 1 ]; do sleep 5; echo y; done ) | ./android update sdk --no-ui -t 1,2,3,7,32,65,119,143,153,154,168"
   - "cd ../tools"
   - "ls -la"
-  - "echo no | android create avd --force -n test -t android-22 --abi x86"
-  - "emulator -avd test -no-skin -no-audio -no-window &"
+  - "echo no | ./android create avd --force -n test -t android-22 --abi x86"
+  - "./emulator -avd test -no-skin -no-audio -no-window &"
 before_script:
   - "cd ~"
   - "npm install -g chromedriver"
