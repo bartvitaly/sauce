@@ -14,7 +14,7 @@ before_install:
   - "export PATH=$ANDROID_HOME/platform-tools:$PATH"
   - "export PATH=$ANDROID_HOME/build-tools:$PATH"
   - "cd ../tools"
-  - "android update sdk -a -u -t sys-img-x86-android-23"
+  - "./android update sdk -a -u -t sys-img-x86-android-23"
   - "cd ../tools"
   - "./android list target"
   - "echo no | ./android create avd -n Nexus9 -t 1 --abi default/x86"
