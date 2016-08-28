@@ -12,6 +12,7 @@ before_install:
   - "wget http://dl.google.com/android/android-sdk_r24.2-linux.tgz"
   - "tar -xvf android-sdk_r24.2-linux.tgz"
   - "cd android-sdk-linux/tools"
+  - "./android list targets"
   - "echo no | ./android create avd --force -n test -t android-22 --abi x86"
   - "./emulator -avd test -no-skin -no-audio -no-window &"
 before_script: 
