@@ -8,10 +8,10 @@ before_install:
   - "wget http://dl.google.com/android/android-sdk_r24.2-linux.tgz"
   - "tar -xvf android-sdk_r24.2-linux.tgz"
   - "cd android-sdk-linux/tools"
-  - "( while [ 1 ]; do sleep 5; echo y; done ) | ./android update sdk --no-ui -t 1,2,3,7,32,65,119,143,153,154,168"
+  - "( while [ 1 ]; do sleep 5; echo y; done ) | ./android update sdk --no-ui -t 1,2,3,7,32,65,68,69,119,143,153,154,168"
   - "cd ../tools"
   - "./android list target"
-  - "echo no | ./android create avd --force -n test -t android-21 --abi x86"
+  - "echo no | ./android create avd -n Nexus9 -t 1 --abi "google_apis/x86""
   - "./emulator -avd test -no-skin -no-audio -no-window &"
 before_script:
   - "cd ~"
