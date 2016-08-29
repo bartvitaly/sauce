@@ -6,9 +6,9 @@
  * @bartvitaly
  */
 
-var homePage = require('../po/mobile/homePage.js');
-var trackOrderPage = require('../po/mobile/trackOrderPage.js');
-var orderSummaryPage = require('../po/mobile/orderSummaryPage.js');
+var homePage = require('../po/mobile/homepage.js');
+var trackOrderPage = require('../po/mobile/trackorderpage.js');
+var orderSummaryPage = require('../po/mobile/ordersummarypage.js');
 
 var common = require('../common/common.js');
 
