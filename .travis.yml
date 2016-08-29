@@ -16,7 +16,7 @@ before_install:
   - "cd ../tools"
   - pwd
   - "./android list target"
-  - "echo no | ./android create avd -n Nexus9 -t 1 --abi default/x86"
+  - "echo no | ./android create avd -n Nexus9 -t 1 --abi x86"
   - "./emulator -avd Nexus9 -no-skin -no-audio -no-window &"
 before_script: 
   - "cd ~"
