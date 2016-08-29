@@ -1,54 +1,23 @@
 --- 
-addons: 
-  android: true
-  artifacts: true
-  sauce_connect: true
-before_install: 
-  - "sudo apt-get install openjdk-7-jdk"
-  - "wget http://dl.google.com/android/android-sdk_r24.2-linux.tgz"
-  - "tar -xvf android-sdk_r24.2-linux.tgz"
-  - "cd android-sdk-linux/tools"
-  - "./android list sdk --extended --no-ui --all"
-  - "( while [ 1 ]; do sleep 5; echo y; done ) | ./android update sdk --no-ui -t 1,2,3,7,32,33,64,65,67,68,69,80,81,82,83,84,85,87,86,87,88,89,119,143,153,154,168"
-  - "export ANDROID_HOME=~/sauce/android-sdk-linux"
-  - "export PATH=$ANDROID_HOME/tools:$PATH"
-  - "export PATH=$ANDROID_HOME/platform-tools:$PATH"
-  - "export PATH=$ANDROID_HOME/build-tools:$PATH"
-  - "cd ../tools"
-  - "./android list sdk"
-  - "./android list target"
-  - "./android list sdk --extended --no-ui --all"
-  - "echo no | ./android create avd --force -n test -t android-21 --abi google_apis/armeabi-v7a"
-  - "./emulator -avd test -no-skin -no-audio -no-window &"
-  - "cd ../platform-tools"
-  - "adb shell input keyevent 82 &"
+android: 
+  components: 
+    - build-tools-22.0.1
+    - android-22
+    - sys-img-armeabi-v7a-android-22
+    - add-on
+    - extra
+  licenses: 
+    - android-sdk-preview-license-52d11cd2
+    - android-sdk-license-.+
+    - google-gdk-license-.+
 before_script: 
-  - "cd ~"
-  - "npm install -g chromedriver"
-  - "npm install -g protractor"
-  - "npm install -g protractor-html-screenshot-reporter"
-  - "npm install -g wd"
-  - "npm install -g wd-bridge"
-  - "npm install jasmine-reporters"
-  - "npm install -g appium"
-  - "npm install -g chrome"
-  - "npm install mkdirp"
-  - "npm install underscore"
-  - "npm install -g android"
-  - "webdriver-manager update"
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - "sleep 3"
-  - "appium &"
-dist: trusty
-env: 
-  global: 
-    - 
-      secure: bartvitaly
-    - 
-      secure: 96fe819c-b6e1-472f-9e98-5793cacb1d62
-language: node_js
-node_js: 
-  - "4"
+  - "echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a"
+  - "emulator -avd test -no-audio -no-window &"
+  - android-wait-for-emulator
+  - "adb shell input keyevent 82 &"
+cache: false
+jdk: oraclejdk7
+language: android
 script: 
-  - "protractor conf/sauce.js"
+  - ./wait_for_emulator
+sudo: false
