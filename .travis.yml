@@ -15,7 +15,7 @@ before_install:
   - "export PATH=$ANDROID_HOME/build-tools:$PATH"
   - "cd ../tools"
   - "./android list target"
-  - "echo no | ./android create avd --force -n test -t android-22 --abi armeabi-v7a"
+  - "echo no | ./android create avd --force -n test -t android-21 --abi armeabi-v7a"
   - "./emulator -avd test -no-skin -no-audio -no-window &"
   - "cd ../platform-tools"
   - "adb shell input keyevent 82 &"
