@@ -1,51 +1,28 @@
 --- 
-addons: 
-  android: true
-  artifacts: true
-  sauce_connect: true
-before_install: 
-  - "sudo apt-get install openjdk-7-jdk"
-  - "wget http://dl.google.com/android/android-sdk_r24.2-linux.tgz"
-  - "tar -xvf android-sdk_r24.2-linux.tgz"
-  - "cd android-sdk-linux/tools"
-  - "( while [ 1 ]; do sleep 5; echo y; done ) | ./android update sdk --no-ui"
-  - "export ANDROID_HOME=~/sauce/android-sdk-linux"
-  - "export PATH=$ANDROID_HOME/tools:$PATH"
-  - "export PATH=$ANDROID_HOME/platform-tools:$PATH"
-  - "export PATH=$ANDROID_HOME/build-tools:$PATH"
-  - "cd ../tools"
-  - "./android list target"
-  - "echo no | ./android create avd --force -n test -t android-21 --abi armeabi-v7a"
-  - "./emulator -avd test -no-skin -no-audio -no-window &"
-  - "cd ../platform-tools"
-  - "adb shell input keyevent 82 &"
+android: 
+  components: 
+    - platform-tools
+    - tools
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    - android-$ANDROID_BUILD_TOOLS_VERSION
+    - addon-google_apis-google-$ANDROID_API_LEVEL
+    - extra-google-google_play_services
+    - extra-android-support
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - sys-img-armeabi-v7a-android-$ANDROID_BUILD_TOOLS_VERSION
 before_script: 
-  - "cd ~"
-  - "npm install -g chromedriver"
-  - "npm install -g protractor"
-  - "npm install -g protractor-html-screenshot-reporter"
-  - "npm install -g wd"
-  - "npm install -g wd-bridge"
-  - "npm install jasmine-reporters"
-  - "npm install -g appium"
-  - "npm install -g chrome"
-  - "npm install mkdirp"
-  - "npm install underscore"
-  - "npm install -g android"
-  - "webdriver-manager update"
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - "sleep 3"
-  - appium
-dist: trusty
+  - "echo no | android create avd --force -n test -t \"Google Inc.:Google APIs:\"$ANDROID_API_LEVEL --abi $ANDROID_ABI"
+  - "emulator -avd test -no-skin -no-audio -no-window &"
+cache: false
 env: 
   global: 
-    - 
-      secure: bartvitaly
-    - 
-      secure: 96fe819c-b6e1-472f-9e98-5793cacb1d62
-language: node_js
-node_js: 
-  - "4"
+    - ANDROID_API_LEVEL=21
+    - ANDROID_BUILD_TOOLS_VERSION=21.1.2
+    - ANDROID_ABI=armeabi-v7a
+jdk: oraclejdk7
+language: android
 script: 
-  - "protractor conf/sauce.js"
+  - ./wait_for_emulator
+  - "./gradlew connectedCheck -PdisablePreDex"
+sudo: false
