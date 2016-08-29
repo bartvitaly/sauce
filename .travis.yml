@@ -39,5 +39,6 @@ jdk: oraclejdk7
 language: android
 script: 
   - pwd
-  - "protractor sauce/conf/sauce.js"
+  - "ls -la"
+  - "protractor conf/sauce.js"
 sudo: false
