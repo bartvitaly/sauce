@@ -23,7 +23,7 @@ exports.config = {
 
 	allScriptsTimeout : timeout,
 
-	specs : [ '../specs/track_order.js' ],
+	specs : [ '../specs/checkout_e2e.js' ],
 
 	baseUrl : 'https://release1.viralstyle.com', //https://release1.viralstyle.com, 52.40.217.139
 
