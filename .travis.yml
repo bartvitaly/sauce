@@ -1,7 +1,7 @@
 --- 
 addons: 
   artifacts: true
-  firefox: "48.0"
+  firefox: "39.0"
 android: 
   components: 
     - build-tools-22.0.1
@@ -13,8 +13,6 @@ android:
     - android-sdk-preview-license-52d11cd2
     - android-sdk-license-.+
     - google-gdk-license-.+
-before_install: 
-  - "sudo apt-get install chromium-browser"
 before_script: 
   - "nvm install 4"
   - "echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a"
@@ -22,6 +20,7 @@ before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - "npm install -g chromedriver"
+  - "npm install -g selenium-webdriver"
   - "npm install -g protractor"
   - "npm install -g protractor-html-screenshot-reporter"
   - "npm install -g wd"
