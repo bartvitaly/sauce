@@ -6,13 +6,13 @@
  * @bartvitaly
  */
 
-var timeout = 120000;
+var timeout = 180000;
 
 exports.config = {
 
 	capabilities : {
 		'newCommandTimeout' : timeout / 1000,
-		'browserName' : 'Chrome',
+		'browserName' : 'Browser',
 		'deviceName' : 'test',
 		'platformName' : 'Android',
 		'platformVersion' : '5.1.1',
@@ -75,7 +75,7 @@ exports.config = {
 			}));
 			browser.ignoreSynchronization = true;
 			browser.manage().timeouts().setScriptTimeout(timeout);
-			browser.manage().timeouts().pageLoadTimeout(timeout);
+//			browser.manage().timeouts().pageLoadTimeout(timeout);
 			browser.manage().timeouts().implicitlyWait(timeout);
 			browser.manage().deleteAllCookies();
 		});
