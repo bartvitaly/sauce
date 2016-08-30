@@ -2,7 +2,7 @@
 android: 
   components: 
     - build-tools-22.0.1
-    - android-22
+    - android-23
     - sys-img-armeabi-v7a-google_apis-23
     - add-on
     - extra
