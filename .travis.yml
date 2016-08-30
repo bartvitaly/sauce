@@ -12,7 +12,7 @@ android:
     - google-gdk-license-.+
 before_script: 
   - "nvm install 4"
-  - "npm install -g appium@1.4.16"
+  - "npm install -g appium"
   - "appium &"
   - "echo no | android create avd --force -n test -t android-22 --abi x86_64"
   - "emulator -avd test -no-audio -no-window &"
