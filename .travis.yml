@@ -22,7 +22,6 @@ before_script:
   - "curl -Lo chrome.zip https://download-chromium.appspot.com/dl/Linux_x64 && unzip chrome.zip"
   - "npm install jspm"
   - "jspm config registries.github.auth $GH_TOKEN"
-  - "npm install"
   - "npm install -g protractor"
   - "npm install -g protractor-html-screenshot-reporter"
   - "npm install -g wd"
