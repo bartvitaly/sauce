@@ -36,6 +36,8 @@ before_script:
 cache: false
 jdk: oraclejdk7
 language: android
-script:
+script: 
   - "protractor conf/sauce.js"
-sudo: false
+services: 
+  - docker
+sudo: required
