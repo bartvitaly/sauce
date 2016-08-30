@@ -1,5 +1,4 @@
---- 
-group: edge
+---
 addons: 
   artifacts: true
 android: 
@@ -14,6 +13,8 @@ android:
     - android-sdk-license-.+
     - google-gdk-license-.+
 before_install: 
+  - "sudo apt-get update"
+  - "sudo apt-get install -y libappindicator1 fonts-liberation"
   - "sudo apt-get install libxss1 libappindicator1 libindicator7"
   - "wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
   - "sudo apt-get install -f"
@@ -38,7 +39,6 @@ before_script:
   - "npm install -g android"
   - "webdriver-manager update"
 cache: false
-dist: trusty
 jdk: oraclejdk7
 language: android
 script: 
