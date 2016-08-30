@@ -6,7 +6,7 @@
  * @bartvitaly
  */
 
-var timeout = 90000;
+var timeout = 120000;
 
 exports.config = {
 
