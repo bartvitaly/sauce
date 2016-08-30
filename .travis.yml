@@ -37,7 +37,7 @@ before_script:
   - "npm install -g android"
   - "webdriver-manager update"
 cache: false
-dist: trusty
+dist: precise
 jdk: oraclejdk7
 language: android
 script: 
