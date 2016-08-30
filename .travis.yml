@@ -1,4 +1,5 @@
 --- 
+group: edge
 addons: 
   artifacts: true
 android: 
@@ -14,7 +15,9 @@ android:
     - google-gdk-license-.+
 before_install: 
   - "sudo apt-get install libxss1 libappindicator1 libindicator7"
-  - "sudo apt-get install chromium-browser"
+  - "wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+  - "sudo apt-get install -f"
+  - "sudo dpkg -i google-chrome*.deb"
 before_script: 
   - "nvm install 4"
   - "echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a"
@@ -35,7 +38,6 @@ before_script:
   - "npm install -g android"
   - "webdriver-manager update"
 cache: false
-dist: precise
 jdk: oraclejdk7
 language: android
 script: 
