@@ -12,8 +12,8 @@ exports.config = {
 
 	capabilities : {
 		'newCommandTimeout' : timeout / 1000,
-		'browserName' : 'Chrome',
-		'deviceName' : 'nexus3_arm',
+		'browserName' : 'Browser',
+		'deviceName' : 'test',
 		'platformName' : 'Android',
 		'platformVersion' : '5.1.1',
 		'udid' : 'emulator-5554'
