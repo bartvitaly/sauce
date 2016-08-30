@@ -37,10 +37,11 @@ before_script:
   - "npm install -g android"
   - "webdriver-manager update"
 cache: false
+dist: trusty
 jdk: oraclejdk7
 language: android
 script: 
   - "adb shell input keyevent 82 &"
   - "protractor Project/e2e_web.js"
   - "protractor conf/sauce.js"
-sudo: false
+sudo: required
