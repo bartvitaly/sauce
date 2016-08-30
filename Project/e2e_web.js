@@ -1,7 +1,7 @@
 exports.config = {
 	directConnect : true,
 	capabilities : {
-		'browserName' : 'chrome'
+		'browserName' : 'firefox'
 	},
 	framework : 'jasmine',
 	specs : [ 'smoke.spec.js' ],
