@@ -19,6 +19,7 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - "npm install -g appium"
   - "nohup appium &"
+  - "adb install apk/chrome51arm.apk"
   - "npm install -g chromedriver"
   - "npm install -g protractor"
   - "npm install -g protractor-html-screenshot-reporter"

@@ -12,7 +12,7 @@ exports.config = {
 
 	capabilities : {
 		'newCommandTimeout' : timeout / 1000,
-		'browserName' : 'Browser',
+		'browserName' : 'Chrome',
 		'deviceName' : 'test',
 		'platformName' : 'Android',
 		'platformVersion' : '5.1.1',
