@@ -17,7 +17,7 @@ before_script:
   - android-wait-for-emulator
   - "adb shell input keyevent 82 &"
   - "adb devices"
-  - "adb install apk/chrome.apk"
+  - "adb install apk/chrome51arm.apk"
   - "npm install -g appium@1.4.16"
   - "nohup appium &"
   - "export DISPLAY=:99.0"
@@ -36,8 +36,6 @@ before_script:
 cache: false
 jdk: oraclejdk7
 language: android
-script: 
-  - pwd
-  - "ls -la"
+script:
   - "protractor conf/sauce.js"
 sudo: false
