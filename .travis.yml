@@ -30,7 +30,6 @@ before_script:
   - "npm install underscore"
   - "npm install -g android"
   - "webdriver-manager update"
-  - "adb shell input keyevent 82 &"
 cache: false
 jdk: oraclejdk7
 language: android
