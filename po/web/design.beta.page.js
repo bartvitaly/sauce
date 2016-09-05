@@ -10,6 +10,9 @@ var designBetaPage = function() {
 
 	this.nextButton = by.css(".step2"); // .product-prices .green-meadow
 
+	this.product = by.css(".product-list:nth-of-type(1)");
+	this.selectProduct = by.css(".product-list:nth-of-type(1) .btn-success");
+
 	this.chooseProductButton = by.css(".menu-left>li:first-child");
 	this.clearAll = by.css(".intercom-notifications-dismiss-button");
 
@@ -49,6 +52,12 @@ var designBetaPage = function() {
 		 * browser.driver.findElement(by.xpath('.//*[text()="' + product +
 		 * '"]/following-sibling::div[@class="row"]//button[text()="Select"]')).click(); })
 		 */
+	};
+
+	this.chooseProduct = function(product) {
+		commonFunctions.click(this.product);
+		browser.driver.actions().sendKeys(protractor.Key.PAGE_DOWN).perform();
+		commonFunctions.click(this.selectProduct);
 	};
 
 	this.clickAddTextButton = function() {

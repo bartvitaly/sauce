@@ -88,24 +88,24 @@ describe("Smoke test", function() {
 
 	});
 
-	it("Check basic smoke test", function() {
-		// browser.sleep(5000);
-		// designBetaPage.clickChooseProductButton();
-		// browser.sleep(5000);
-
+	it("Choose a product category", function() {
 		console.log('product category ' + productCategory.category);
 		designBetaPage.chooseAProductCategory(productCategory.category);
 
-		console.log('product ' + product);
-		designBetaPage.chooseAProduct(product);
+	});
 
+	it("Choose a product ", function() {
+		console.log('choose a product ');
+		designBetaPage.chooseProduct();
+
+	});
+
+	it("Add Additional products", function() {
 		console.log('click add text button');
 		designBetaPage.clickAddTextButton();
 
 		designBetaPage.clickNextButton();
-	});
 
-	it("Add Additional products", function() {
 		pricingAndProducts.clickNextButton();
 
 		// login
