@@ -12,14 +12,6 @@ describe("Smoke test", function() {
 	beforeAll(function() {
 		browser.driver.manage().window().maximize();
 		browser.driver.get(browser.baseUrl + "/design.beta#designer");
-		// browser.sleep(20000);
-		// loginPage.clickClose();
-		// browser.sleep(5000);
-		// loginPage.clickLoginButtonOnDashBoard();
-		// browser.sleep(5000);
-		// loginPage.login(browser.params.user.email,
-		// browser.params.user.password);
-		// browser.sleep(5000);
 	});
 
 	it("test", function() {
@@ -106,27 +98,20 @@ describe("Smoke test", function() {
 
 		console.log('product ' + product);
 		designBetaPage.chooseAProduct(product);
-		browser.sleep(5000);
-
-		// login
-		console.log('click login button');
-		loginPage.clickLoginButtonOnDashBoard();
-		browser.sleep(5000);
-		console.log('fill email and password');
-		loginPage.login(browser.params.user.email, browser.params.user.password);
-		browser.sleep(5000);
 
 		console.log('click add text button');
 		designBetaPage.clickAddTextButton();
-		browser.sleep(4000);
 
 		designBetaPage.clickNextButton();
 	});
 
 	it("Add Additional products", function() {
-		browser.sleep(4000);
 		pricingAndProducts.clickNextButton();
 
+		// login
+		loginPage.login(browser.params.user.email, browser.params.user.password);
+
+		pricingAndProducts.clickNextButton();
 	});
 	it("check launch", function() {
 
