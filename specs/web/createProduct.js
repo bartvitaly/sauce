@@ -136,23 +136,23 @@ describe("Smoke test", function() {
 		designBetaPage.clickNextButton();
 		browser.sleep(4000);
 
-		if (random) {
-			pricingAndProducts.clickAddAdditionalProducts();
-			browser.sleep(4000);
-			pricingAndProducts.chooseAProductCategory(additionalCategory.category);
-			browser.sleep(4000);
-			pricingAndProducts.chooseAProduct(additionalProduct);
-			browser.sleep(4000);
-			pricingAndProducts.clickClose();
-			browser.sleep(4000);
-			pricingAndProducts.chooseColor("White");
-			browser.sleep(4000);
-			/*
-			 * pricingAndProducts.getTitleOfAdditionalProducts().then(function(products) {
-			 * console.log("Products: " + products); });
-			 */
+//		if (random) {
+//			pricingAndProducts.clickAddAdditionalProducts();
+//			browser.sleep(4000);
+//			pricingAndProducts.chooseAProductCategory(additionalCategory.category);
+//			browser.sleep(4000);
+//			pricingAndProducts.chooseAProduct(additionalProduct);
+//			browser.sleep(4000);
+//			pricingAndProducts.clickClose();
+//			browser.sleep(4000);
+//			pricingAndProducts.chooseColor("White");
+//			browser.sleep(4000);
+//			/*
+//			 * pricingAndProducts.getTitleOfAdditionalProducts().then(function(products) {
+//			 * console.log("Products: " + products); });
+//			 */
+//		}
 			pricingAndProducts.clickNextButton();
-		}
 	});
 	it("check launch", function() {
 		/* xit("check launch", function() { */
