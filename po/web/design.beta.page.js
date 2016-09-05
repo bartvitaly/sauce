@@ -7,7 +7,9 @@ var designBetaPage = function () {
 	this.XOnForm = by.css('.glyphicons.remove_2.glyphicons-12.pull-right');
 	this.showBackButton = by.xpath('.//*[@class="box-thumb btn-show-back pull-left"]/span[contains(text(),"Back")]');
 	this.showFrontButton = by.xpath('.//*[@class="box-thumb btn-show-back pull-left"]/span[contains(text(),"Front")]');
-	this.nextButton = by.xpath(".//*[@class='align-center']//*[@class='btn green-meadow btn-md']");
+	
+	this.nextButton = by.xpath(".product-prices .green-meadow");
+	
 	this.chooseProductButton = by.css(".menu-left>li:first-child");
 	this.clearAll = by.css(".intercom-notifications-dismiss-button");
 

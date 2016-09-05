@@ -109,53 +109,27 @@ describe("Smoke test", function() {
 		browser.sleep(5000);
 
 		// login
-//		console.log('click login button');
-//		loginPage.clickLoginButtonOnDashBoard();
-//		browser.sleep(5000);
-//		console.log('fill email and password');
-//		loginPage.login(browser.params.user.email, browser.params.user.password);
-//		browser.sleep(5000);
+		console.log('click login button');
+		loginPage.clickLoginButtonOnDashBoard();
+		browser.sleep(5000);
+		console.log('fill email and password');
+		loginPage.login(browser.params.user.email, browser.params.user.password);
+		browser.sleep(5000);
 
 		console.log('click add text button');
 		designBetaPage.clickAddTextButton();
 		browser.sleep(4000);
 
-//		console.log('edit text of a product');
-//		designBetaPage.editText("FRONT");
-
-	});
-
-	xit("should upload a file", function() {
-		var path = require("path");
-		var fileToUpload = "1417383530_1.jpg", absolutePath = path.resolve("", fileToUpload);
-		browser.driver.findElement(by.css("input[type='file']")).sendKeys(absolutePath);
-		browser.sleep(50000);
-	});
-	/* it("Add Additional products", function() { */
-	it("Add Additional products", function() {
 		designBetaPage.clickNextButton();
-		browser.sleep(4000);
+	});
 
-//		if (random) {
-//			pricingAndProducts.clickAddAdditionalProducts();
-//			browser.sleep(4000);
-//			pricingAndProducts.chooseAProductCategory(additionalCategory.category);
-//			browser.sleep(4000);
-//			pricingAndProducts.chooseAProduct(additionalProduct);
-//			browser.sleep(4000);
-//			pricingAndProducts.clickClose();
-//			browser.sleep(4000);
-//			pricingAndProducts.chooseColor("White");
-//			browser.sleep(4000);
-//			/*
-//			 * pricingAndProducts.getTitleOfAdditionalProducts().then(function(products) {
-//			 * console.log("Products: " + products); });
-//			 */
-//		}
-			pricingAndProducts.clickNextButton();
+	it("Add Additional products", function() {
+		browser.sleep(4000);
+		pricingAndProducts.clickNextButton();
+
 	});
 	it("check launch", function() {
-		/* xit("check launch", function() { */
+
 		launchPage.typeCampaignTitle(Math.floor(Date.now() / 1000));
 		launchPage.typeDescription(Math.floor(Date.now() / 1000));
 
@@ -169,11 +143,6 @@ describe("Smoke test", function() {
 		launchPage.clickLaunchButton();
 		browser.sleep(40000);
 
-		/*
-		 * browser.sleep(8000); browser.driver.wait(function () {
-		 * browser.driver.isElementPresent(by.xpath(".//*[contains(text(),'LOADING')]")).then(function(present){
-		 * console.log("present: " + present); }) }, 40000);
-		 */
 	});
 
 	function productCategory(category, products) {
