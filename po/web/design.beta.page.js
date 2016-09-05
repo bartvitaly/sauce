@@ -3,7 +3,7 @@ var commonFunctions = require('../../common/commonWeb.js');
 var designBetaPage = function () {
 
 	this.addTextButton = by.css(".add_item_text");
-	this.editTextInput = by.css('.form-control.text-update');
+	this.editTextInput = by.css("[id='options-add_item_text'] textarea");
 	this.XOnForm = by.css('.glyphicons.remove_2.glyphicons-12.pull-right');
 	this.showBackButton = by.xpath('.//*[@class="box-thumb btn-show-back pull-left"]/span[contains(text(),"Back")]');
 	this.showFrontButton = by.xpath('.//*[@class="box-thumb btn-show-back pull-left"]/span[contains(text(),"Front")]');
