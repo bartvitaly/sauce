@@ -120,8 +120,8 @@ describe("Smoke test", function() {
 		designBetaPage.clickAddTextButton();
 		browser.sleep(4000);
 
-		console.log('edit text of a product');
-		designBetaPage.editText("FRONT");
+//		console.log('edit text of a product');
+//		designBetaPage.editText("FRONT");
 
 	});
 
