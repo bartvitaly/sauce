@@ -8,7 +8,7 @@ exports.config = {
 	},
 	framework : 'jasmine',
 	specs : [ // '../specs/web/smoke.spec.js'
-	'../specs/web/createProduct.js' ],
+	'../specs/web/createProduct_e2e.js' ],
 
 	params : {
 		prodUrl : 'https://viralstyle.com',
