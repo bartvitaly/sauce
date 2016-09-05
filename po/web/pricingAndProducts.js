@@ -4,7 +4,7 @@ var pricingAndProductsPage = function () {
 	this.addAdditionalProductsButton = by.css(".btn-add-product");
 	this.closeButton = by.xpath(".//button[text()='Close']");
 
-	this.nextButton = by.xpath(".launch-step-pricing .green-meadow.btn-md");
+	this.nextButton = by.css(".launch-step-pricing .green-meadow.btn-md");
 
 	this.clickAddAdditionalProducts = function () {
 		commonFunctions.click(this.addAdditionalProductsButton);

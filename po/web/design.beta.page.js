@@ -8,7 +8,7 @@ var designBetaPage = function () {
 	this.showBackButton = by.xpath('.//*[@class="box-thumb btn-show-back pull-left"]/span[contains(text(),"Back")]');
 	this.showFrontButton = by.xpath('.//*[@class="box-thumb btn-show-back pull-left"]/span[contains(text(),"Front")]');
 	
-	this.nextButton = by.xpath(".product-prices .green-meadow");
+	this.nextButton = by.css(".product-prices .green-meadow");
 	
 	this.chooseProductButton = by.css(".menu-left>li:first-child");
 	this.clearAll = by.css(".intercom-notifications-dismiss-button");
