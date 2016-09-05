@@ -109,18 +109,18 @@ describe("Smoke test", function() {
 		browser.sleep(5000);
 
 		// login
-		console.log('click login button');
-		loginPage.clickLoginButtonOnDashBoard();
-		browser.sleep(5000);
-		console.log('fill email and password');
-		loginPage.login(browser.params.user.email, browser.params.user.password);
-		browser.sleep(5000);
+//		console.log('click login button');
+//		loginPage.clickLoginButtonOnDashBoard();
+//		browser.sleep(5000);
+//		console.log('fill email and password');
+//		loginPage.login(browser.params.user.email, browser.params.user.password);
+//		browser.sleep(5000);
 
 		console.log('click add text button');
 		designBetaPage.clickAddTextButton();
 		browser.sleep(4000);
 
-		console.log('click add text button');
+		console.log('edit text of a product');
 		designBetaPage.editText("FRONT");
 
 	});
