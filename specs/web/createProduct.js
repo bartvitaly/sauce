@@ -12,13 +12,13 @@ describe("Smoke test", function() {
 	beforeAll(function() {
 		browser.driver.manage().window().maximize();
 		browser.driver.get(browser.baseUrl + "/design.beta#designer");
-		browser.sleep(20000);
-		loginPage.clickClose();
-		browser.sleep(5000);
-		loginPage.clickLoginButtonOnDashBoard();
-		browser.sleep(5000);
-		loginPage.login(browser.params.user.email, browser.params.user.password);
-		browser.sleep(5000);
+//		browser.sleep(20000);
+//		loginPage.clickClose();
+//		browser.sleep(5000);
+//		loginPage.clickLoginButtonOnDashBoard();
+//		browser.sleep(5000);
+//		loginPage.login(browser.params.user.email, browser.params.user.password);
+//		browser.sleep(5000);
 	});
 
 	it("test", function() {
@@ -97,13 +97,20 @@ describe("Smoke test", function() {
 
 	it("Check basic smoke test", function() {
 		// browser.sleep(5000);
-		designBetaPage.clickChooseProductButton();
-		browser.sleep(5000);
-		console.log(productCategory.category);
-		console.log(product);
+//		designBetaPage.clickChooseProductButton();
+//		browser.sleep(5000);
+		console.log('product category ' + productCategory.category);
+		console.log('product ' + product);
 		designBetaPage.chooseAProductCategory(productCategory.category);
 		designBetaPage.chooseAProduct(product);
 		browser.sleep(5000);
+		
+//		login
+		loginPage.clickLoginButtonOnDashBoard();
+		browser.sleep(5000);
+		loginPage.login(browser.params.user.email, browser.params.user.password);
+		browser.sleep(5000);
+		
 		designBetaPage.clickAddTextButton();
 		// browser.sleep(4000);
 		designBetaPage.editText("FRONT");

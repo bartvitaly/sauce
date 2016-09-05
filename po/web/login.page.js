@@ -2,7 +2,7 @@ var commonFunctions = require('../../common/commonWeb.js');
 
 var loginPage = function () {
 
-	this.close = by.css(".modal-dialog.modal-lg [aria-label='Close']");	
+	this.close = by.css("[id='choose_product_modal'] .close");	
 	this.loginButton = by.css("button[class*='login-btn']");
 	this.loginButtonOnDashBoard = by.xpath(".//*[text()='Log In']");
 	this.emailInput = by.id("email_input");
