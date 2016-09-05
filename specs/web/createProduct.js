@@ -12,13 +12,14 @@ describe("Smoke test", function() {
 	beforeAll(function() {
 		browser.driver.manage().window().maximize();
 		browser.driver.get(browser.baseUrl + "/design.beta#designer");
-//		browser.sleep(20000);
-//		loginPage.clickClose();
-//		browser.sleep(5000);
-//		loginPage.clickLoginButtonOnDashBoard();
-//		browser.sleep(5000);
-//		loginPage.login(browser.params.user.email, browser.params.user.password);
-//		browser.sleep(5000);
+		// browser.sleep(20000);
+		// loginPage.clickClose();
+		// browser.sleep(5000);
+		// loginPage.clickLoginButtonOnDashBoard();
+		// browser.sleep(5000);
+		// loginPage.login(browser.params.user.email,
+		// browser.params.user.password);
+		// browser.sleep(5000);
 	});
 
 	it("test", function() {
@@ -36,14 +37,14 @@ describe("Smoke test", function() {
 		 * ,"Women\'s Tank Top", "Women\'s Tank Top", "Women\'s Flowy Tank",
 		 * "Reversible Mesh Tank"];
 		 */
-		 var tankTops = new productCategory("Tank Tops", products);
-		 products = [ "Mens V-Neck", "Women\'s V-Neck" ];
-		 var vNecks = new productCategory("V-Necks", products);
-		 products = [ "Coffee Mug", "Color Coffee Mug" ];
-		 var mugs = new productCategory("Mugs", products);
-		 products = [ "Gildan Kids" ];
-		 var kids = new productCategory("Kids", products);
-		 products = [ "Sublimation Tee", "Sublimation Tank", "Flip Flops White" ]
+		var tankTops = new productCategory("Tank Tops", products);
+		products = [ "Mens V-Neck", "Women\'s V-Neck" ];
+		var vNecks = new productCategory("V-Necks", products);
+		products = [ "Coffee Mug", "Color Coffee Mug" ];
+		var mugs = new productCategory("Mugs", products);
+		products = [ "Gildan Kids" ];
+		var kids = new productCategory("Kids", products);
+		products = [ "Sublimation Tee", "Sublimation Tank", "Flip Flops White" ]
 		// "Flip Flops Black",
 		// "8\" Round Wall Clock",
 		// "Laptop Sleeve"];
@@ -78,7 +79,7 @@ describe("Smoke test", function() {
 		var shuffledProductCategories = underscore.shuffle(productCategories);
 		var shuffledProducts = underscore.shuffle(shuffledProductCategories[0].products);
 		productCategory = shuffledProductCategories[0];
-		product = "Unisex Cotton Tee";//shuffledProducts[0];
+		product = "Unisex Cotton Tee";// shuffledProducts[0];
 		// shuffle productCategories
 		console.log("productCategory: " + productCategory.category);
 
@@ -87,7 +88,7 @@ describe("Smoke test", function() {
 				additionalProductCategories.splice(i, 1);
 				break;
 			}
-			var shuffledAdditionalCategory = underscore.shuffle(additionalProductCategories);
+		var shuffledAdditionalCategory = underscore.shuffle(additionalProductCategories);
 		additionalCategory = vNecks// shuffledAdditionalCategory[0];
 		additionalProduct = additionalCategory.products[0];
 		console.log("additionalCategory: " + additionalCategory.category);
@@ -97,32 +98,30 @@ describe("Smoke test", function() {
 
 	it("Check basic smoke test", function() {
 		// browser.sleep(5000);
-//		designBetaPage.clickChooseProductButton();
-//		browser.sleep(5000);
+		// designBetaPage.clickChooseProductButton();
+		// browser.sleep(5000);
+
 		console.log('product category ' + productCategory.category);
-		console.log('product ' + product);
 		designBetaPage.chooseAProductCategory(productCategory.category);
+
+		console.log('product ' + product);
 		designBetaPage.chooseAProduct(product);
 		browser.sleep(5000);
-		
-//		login
+
+		// login
+		console.log('click login button');
 		loginPage.clickLoginButtonOnDashBoard();
 		browser.sleep(5000);
+		console.log('fill email and password');
 		loginPage.login(browser.params.user.email, browser.params.user.password);
 		browser.sleep(5000);
-		
+
+		console.log('click add text button');
 		designBetaPage.clickAddTextButton();
-		// browser.sleep(4000);
-		designBetaPage.editText("FRONT");
-		designBetaPage.clickXOnForm();
-		designBetaPage.clickShowBackButton();
-		designBetaPage.clickAddTextButton();
-		designBetaPage.editText("BACK");
-		designBetaPage.clickXOnForm();
-		expect(browser.driver.findElement(by.xpath(".//*[@id='item-back-0']")).getText()).toContain("BACK");
-		designBetaPage.clickShowFrontButton();
-		expect(browser.driver.findElement(by.xpath(".//*[@id='item-front-0']")).getText()).toContain("FRONT");
 		browser.sleep(4000);
+
+		console.log('click add text button');
+		designBetaPage.editText("FRONT");
 
 	});
 
@@ -132,33 +131,33 @@ describe("Smoke test", function() {
 		browser.driver.findElement(by.css("input[type='file']")).sendKeys(absolutePath);
 		browser.sleep(50000);
 	});
-	/*it("Add Additional products", function() {*/
-		it("Add Additional products", function() {
-			designBetaPage.clickNextButton();
-			browser.sleep(4000);
+	/* it("Add Additional products", function() { */
+	it("Add Additional products", function() {
+		designBetaPage.clickNextButton();
+		browser.sleep(4000);
 
-			if (random) {
-				pricingAndProducts.clickAddAdditionalProducts();
-				browser.sleep(4000);
-				pricingAndProducts.chooseAProductCategory(additionalCategory.category);
-				browser.sleep(4000);
-				pricingAndProducts.chooseAProduct(additionalProduct);
-				browser.sleep(4000);
-				pricingAndProducts.clickClose();
-				browser.sleep(4000);
-				pricingAndProducts.chooseColor("White");
-				browser.sleep(4000);
+		if (random) {
+			pricingAndProducts.clickAddAdditionalProducts();
+			browser.sleep(4000);
+			pricingAndProducts.chooseAProductCategory(additionalCategory.category);
+			browser.sleep(4000);
+			pricingAndProducts.chooseAProduct(additionalProduct);
+			browser.sleep(4000);
+			pricingAndProducts.clickClose();
+			browser.sleep(4000);
+			pricingAndProducts.chooseColor("White");
+			browser.sleep(4000);
 			/*
 			 * pricingAndProducts.getTitleOfAdditionalProducts().then(function(products) {
 			 * console.log("Products: " + products); });
 			 */
-			 pricingAndProducts.clickNextButton();
-			}
-		});
-		it("check launch", function() {
-			/*xit("check launch", function() {*/
-				launchPage.typeCampaignTitle(Math.floor(Date.now() / 1000));
-				launchPage.typeDescription(Math.floor(Date.now() / 1000));
+			pricingAndProducts.clickNextButton();
+		}
+	});
+	it("check launch", function() {
+		/* xit("check launch", function() { */
+		launchPage.typeCampaignTitle(Math.floor(Date.now() / 1000));
+		launchPage.typeDescription(Math.floor(Date.now() / 1000));
 
 		// Save a product url to a file
 		launchPage.getURL().then(function(url) {
@@ -175,11 +174,12 @@ describe("Smoke test", function() {
 		 * browser.driver.isElementPresent(by.xpath(".//*[contains(text(),'LOADING')]")).then(function(present){
 		 * console.log("present: " + present); }) }, 40000);
 		 */
-		});
-
-		function productCategory(category, products) {
-			this.category = category;
-			this.products = products;
-		};
-
 	});
+
+	function productCategory(category, products) {
+		this.category = category;
+		this.products = products;
+	}
+	;
+
+});

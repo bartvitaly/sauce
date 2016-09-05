@@ -8,6 +8,7 @@ var commonFunctions = function() {
 	};
 
 	this.sendKeys = function(elementBy, text){
+		console.log('Typing text: \'' + text + '\', into field: ' + elementBy);
 		browser.wait(new protractor.until.Condition('some condition', function () {
 			return browser.driver.findElement(elementBy).isDisplayed();
 		}), 120000).then(function(){
