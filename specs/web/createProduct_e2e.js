@@ -105,14 +105,16 @@ describe("Smoke test", function() {
 		designBetaPage.clickAddTextButton();
 
 		designBetaPage.clickNextButton();
-
 		pricingAndProducts.clickNextButton();
+	});
 
+	it("login", function() {
 		// login
 		loginPage.login(browser.params.user.email, browser.params.user.password);
 
 		pricingAndProducts.clickNextButton();
 	});
+
 	it("check launch", function() {
 
 		launchPage.typeCampaignTitle(Math.floor(Date.now() / 1000));
