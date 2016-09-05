@@ -15,12 +15,12 @@ exports.config = {
 	sauceKey : '96fe819c-b6e1-472f-9e98-5793cacb1d62',
 
 	capabilities : {
-		'browserName' : 'chrome'
+		'browserName' : 'firefox'
 	},
 
 	framework : 'jasmine',
 	
-	specs : [ 'Project/e2e_web.js' ],
+	specs : [ '../specs/web/createProduct.js' ],
 
 	baseUrl : 'https://release1.viralstyle.com',
 
