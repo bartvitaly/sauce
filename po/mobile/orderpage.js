@@ -6,7 +6,7 @@
  * @bartvitaly
  */
 
-var commonFunctions = require('../../common/common.js');
+var common = require('../../common/common.js');
 
 var orderPage = function() {
 
@@ -21,7 +21,7 @@ var orderPage = function() {
 	this.login = by.css("[ng-click*='linkOrder']");
 
 	// Order information
-	this.orderNumber = by.css(".order .title-order h2");
+	this.orderNumber = by.css(".order:not(.promo-order) .title-order h2");
 	this.orderSummary = by.css(".order [ng-click*='goToSummary']");
 	this.orderImage = by.css(".order .item-basket img:not(.ng-hide)");
 	this.orderSizeName = by.css(".order .item-basket .text h3");
@@ -39,52 +39,56 @@ var orderPage = function() {
 	// Upsell popup
 	this.oldPrice = by.css(".sales-list li:nth-of-type(1)");
 	this.newPrice = by.css(".sales-list li:nth-of-type(2)");
+	this.dicountText = by.css(".modal-body .col-sm-7");
+	this.styleSelect = by.css("[ng-model='upsell.selectedGroup']");
+	this.upsellSize = by.css(".size-list li.active");
 	this.addToMyOrder = by.css("a.btn");
 	this.continueShopping = by.css("a.return");
 
 	// Promo order
-	this.promoItems = ".promo-order .item-basket";
-	this.promoItemPrice = ".inc";
-	this.promoItemNameSize = "h3";
+	this.promoOrderNumber = by.css(".promo-order h2");
+	this.promoItems = by.css(".promo-order .item-basket");
+	this.promoItemPrice = by.css(".promo-order .inc");
+	this.promoItemNameSize = by.css(".promo-order h3");
 
 	/*
 	 * Methods
 	 */
 
 	this.checkOrder = function(order) {
-		commonFunctions.checkText(this.title, 'THANK YOU FOR YOUR ORDER.', false);
-		commonFunctions.checkAttribute(this.orderImage, 'src', 'front', true);
+		common.checkText(this.title, 'THANK YOU FOR YOUR ORDER.', false);
+		common.checkAttribute(this.orderImage, 'src', 'front', true);
 
-		commonFunctions.checkText(this.orderNumber, 'YOUR ORDER# ', true);
-		commonFunctions.checkText(this.orderSizeName, order.size, true);
-		commonFunctions.checkText(this.orderSizeName, order.name, true);
-		commonFunctions.checkText(this.orderQuantity, order.quantity + ' x', false);
+		common.checkText(this.orderNumber, 'YOUR ORDER# ', true);
+		common.checkText(this.orderSizeName, order.size, true);
+		common.checkText(this.orderSizeName, order.name, true);
+		common.checkText(this.orderQuantity, order.quantity + ' x', false);
 		if (order.price != null && order.price != '') {
-			commonFunctions.checkText(this.orderPrice, order.price, true);
+			common.checkText(this.orderPrice, order.price, true);
 		}
 	};
 
 	this.checkShipping = function(shipping) {
-		commonFunctions.checkText(this.address, shipping.firstName, true);
-		commonFunctions.checkText(this.address, shipping.lastName, true);
-		commonFunctions.checkText(this.address, shipping.address, true);
-		commonFunctions.checkText(this.address, shipping.aptSuite, true);
-		commonFunctions.checkText(this.address, shipping.city, true);
-		commonFunctions.checkText(this.address, shipping.state, true);
-		commonFunctions.checkText(this.address, shipping.zipCode, true);
-		commonFunctions.checkText(this.address, shipping.countryShort, true);
+		common.checkText(this.address, shipping.firstName, true);
+		common.checkText(this.address, shipping.lastName, true);
+		common.checkText(this.address, shipping.address, true);
+		common.checkText(this.address, shipping.aptSuite, true);
+		common.checkText(this.address, shipping.city, true);
+		common.checkText(this.address, shipping.state, true);
+		common.checkText(this.address, shipping.zipCode, true);
+		common.checkText(this.address, shipping.countryShort, true);
 	};
 
 	this.savePhone = function(phone) {
 		console.log('phone save' + phone);
-		commonFunctions.sendKeys(this.phone, phone);
-		commonFunctions.click(this.save);
+		common.sendKeys(this.phone, phone);
+		common.click(this.save);
 	};
 
 	this.login = function(pass) {
 		console.log('pass login' + pass);
-		commonFunctions.sendKeys(this.password, pass);
-		commonFunctions.click(this.login);
+		common.sendKeys(this.password, pass);
+		common.click(this.login);
 	}
 
 };

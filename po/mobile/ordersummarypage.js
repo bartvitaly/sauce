@@ -6,7 +6,7 @@
  * @bartvitaly
  */
 
-var commonFunctions = require('../../common/common.js');
+var common = require('../../common/common.js');
 
 var orderSummaryPage = function() {
 
@@ -42,29 +42,29 @@ var orderSummaryPage = function() {
 	 */
 
 	this.checkOrder = function(order) {
-		commonFunctions.checkText(this.title, 'ORDER SUMMARY', false);
-		commonFunctions.checkAttribute(this.orderImage, 'src', 'front', true);
+		common.checkText(this.title, 'ORDER SUMMARY', false);
+		common.checkAttribute(this.orderImage, 'src', 'front', true);
 
 		if (order.number != null && order.number != '') {
-			commonFunctions.checkText(this.orderNumber, 'ORDER# ' + order.number, true);
+			common.checkText(this.orderNumber, 'ORDER# ' + order.number, true);
 		}
-		commonFunctions.checkText(this.orderSize, order.size, true);
-		commonFunctions.checkText(this.orderName, order.name.toUpperCase(), true);
-		commonFunctions.checkText(this.orderQuantity, order.quantity, false);
+		common.checkText(this.orderSize, order.size, true);
+		common.checkText(this.orderName, order.name.toUpperCase(), true);
+		common.checkText(this.orderQuantity, order.quantity, false);
 		if (order.price != null && order.price != '') {
-			commonFunctions.checkText(this.orderPrice, order.price, true);
+			common.checkText(this.orderPrice, order.price, true);
 		}
 	};
 
 	this.checkShipping = function(shipping) {
-		commonFunctions.checkText(this.address, shipping.firstName, true);
-		commonFunctions.checkText(this.address, shipping.lastName, true);
-		commonFunctions.checkText(this.address, shipping.address, true);
-		commonFunctions.checkText(this.address, shipping.aptSuite, true);
-		commonFunctions.checkText(this.address, shipping.city, true);
-		commonFunctions.checkText(this.address, shipping.state, true);
-		commonFunctions.checkText(this.address, shipping.zipCode, true);
-		commonFunctions.checkText(this.address, shipping.countryShort, true);
+		common.checkText(this.address, shipping.firstName, true);
+		common.checkText(this.address, shipping.lastName, true);
+		common.checkText(this.address, shipping.address, true);
+		common.checkText(this.address, shipping.aptSuite, true);
+		common.checkText(this.address, shipping.city, true);
+		common.checkText(this.address, shipping.state, true);
+		common.checkText(this.address, shipping.zipCode, true);
+		common.checkText(this.address, shipping.countryShort, true);
 	}
 
 };

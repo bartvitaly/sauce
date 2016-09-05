@@ -203,9 +203,9 @@ var commonFunctions = function() {
 					value = value.toLowerCase();
 				}
 				if (contains) {
-					expect(textActualPromise).toContain(value);
+					expect(textActualPromise).toContain("" + value);
 				} else {
-					expect(textActualPromise).toEqual(value);
+					expect(textActualPromise).toEqual("" + value);
 				}
 			});
 		});

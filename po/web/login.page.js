@@ -1,18 +1,27 @@
+var commonFunctions = require('../../common/commonWeb.js');
+
 var loginPage = function () {
+
+	this.close = by.css(".modal-dialog.modal-lg [aria-label='Close']");	
+	this.loginButton = by.css("button[class*='login-btn']");
+	this.loginButtonOnDashBoard = by.xpath(".//*[text()='Log In']");
+	this.emailInput = by.id("email_input");
+	this.passwordInput = by.id("password_input"); 
+
 	this.clickLoginButtonOnDashBoard = function () {
-		browser.driver.findElement(by.xpath(".//*[text()='Log In']")).click();
+		commonFunctions.click(this.loginButtonOnDashBoard);
 	};
 
 	this.typeEmail = function (email) {
-		browser.driver.findElement(by.id("email_input")).sendKeys(email);
+		commonFunctions.sendKeys(this.emailInput, email);
 	};
 
 	this.typePassword = function (password) {
-		browser.driver.findElement(by.id("password_input")).sendKeys(password);
+		commonFunctions.sendKeys(this.passwordInput, password);		
 	};
 
 	this.clickLoginButton = function () {
-		browser.driver.findElement(by.css("button[class*='login-btn']")).click();
+		commonFunctions.click(this.loginButton);
 	};
 
 	this.login = function (email, password) {
@@ -22,10 +31,7 @@ var loginPage = function () {
 	};
 
 	this.clickClose = function () {
-		browser.driver.wait(function () {
-			return browser.driver.isElementPresent(by.xpath(".//*[@class='modal-dialog modal-lg']//button[@aria-label='Close']"));
-		}, 20000);
-		browser.driver.findElement(by.xpath(".//*[@class='modal-dialog modal-lg']//button[@aria-label='Close']")).click();
+		commonFunctions.click(this.close);
 	};
 
 };

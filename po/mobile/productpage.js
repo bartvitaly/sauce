@@ -77,7 +77,6 @@ var productPage = function() {
 	// remove item in a basket
 	this.removeItem = function(index) {
 		var basketItem = this.cardItems + ":nth-of-type(" + index + ")";
-
 		common.click(by.css(basketItem + ' ' + this.cardItemRemove));
 	};
 

@@ -1,6 +1,13 @@
+var commonFunctions = require('../../common/commonWeb.js');
+
 var pricingAndProductsPage = function () {
-	this.clickAddAdditionalProductsPage = function () {
-		browser.driver.findElement(by.css(".btn-add-product")).click();
+	this.addAdditionalProductsButton = by.css(".btn-add-product");
+	this.closeButton = by.xpath(".//button[text()='Close']");
+
+
+	this.clickAddAdditionalProducts = function () {
+		commonFunctions.click(this.addAdditionalProductsButton);
+		//browser.driver.findElement(by.css(".btn-add-product")).click();
 	}; 
 
 	this.chooseAProductCategory = function (category) {
@@ -12,12 +19,14 @@ var pricingAndProductsPage = function () {
 	};
 
 	this.clickClose = function () {
-		browser.driver.findElement(by.xpath(".//button[text()='Close']")).click();		
+		commonFunctions.click(this.closeButton);
+		//browser.driver.findElement(by.xpath(".//button[text()='Close']")).click();		
 	};
 
 	this.chooseColor = function (color) {
-		browser.driver.actions().sendKeys(protractor.Key.SPACE).perform();
-		browser.driver.actions().sendKeys(protractor.Key.SPACE).perform();
+		browser.driver.actions().sendKeys(protractor.Key.PAGE_DOWN).perform();
+		browser.driver.actions().sendKeys(protractor.Key.PAGE_DOWN).perform();
+		browser.sleep(2000);
 		browser.driver.findElement(by.xpath(".//*[@id='added_list_products']//*[@title='" + color + "']")).click();
 	};
 
@@ -39,8 +48,11 @@ var pricingAndProductsPage = function () {
 	};
 
 	this.clickNextButton = function () {
+		browser.sleep(2000);
 		browser.driver.actions().sendKeys(protractor.Key.SPACE).perform();
+		browser.sleep(2000);
 		browser.driver.actions().sendKeys(protractor.Key.SPACE).perform();
+		browser.sleep(2000);
     	browser.driver.findElement(by.css(".custom-form-group .btn.green-meadow.btn-md")).click();
     };
 };

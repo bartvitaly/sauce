@@ -1,63 +1,74 @@
+var commonFunctions = require('../../common/commonWeb.js');
+
 var designBetaPage = function () {
+
+	this.addTextButton = by.css(".add_item_text");
+	this.editTextInput = by.css('.form-control.text-update');
+	this.XOnForm = by.css('.glyphicons.remove_2.glyphicons-12.pull-right');
+	this.showBackButton = by.xpath('.//*[@class="box-thumb btn-show-back pull-left"]/span[contains(text(),"Back")]');
+	this.showFrontButton = by.xpath('.//*[@class="box-thumb btn-show-back pull-left"]/span[contains(text(),"Front")]');
+	this.nextButton = by.xpath(".//*[@class='align-center']//*[@class='btn green-meadow btn-md']");
+	this.chooseProductButton = by.css(".menu-left>li:first-child");
+	this.clearAll = by.css(".intercom-notifications-dismiss-button");
+
 	this.chooseAProductCategory = function(productCategory){
+/*		browser.wait(new protractor.until.Condition('some condition', function () {
+			return browser.driver.findElement(by.xpath('(.//*[text()="' + productCategory + '"])[1]')).isDisplayed();
+		}), 20000).then(function(){
+			browser.driver.findElement(by.xpath('(.//*[text()="' + productCategory + '"])[1]')).click();
+		})*/
 		browser.driver.wait(function () {
-			return browser.driver.isElementPresent(by.xpath('.//*[text()="' + productCategory + '"]'));
+			return browser.driver.isElementPresent(by.xpath('(.//*[text()="' + productCategory + '"])[1]'));
 		}, 20000);
-		browser.driver.findElement(by.xpath('.//*[text()="' + productCategory + '"]')).click();
+		browser.driver.findElement(by.xpath('(.//*[text()="' + productCategory + '"])[1]')).click();
 	};
 
 	this.chooseAProduct = function(product){
+		element(by.css('#mCSB_2_container>div:nth-of-type(1)')).click();
+		browser.driver.actions().sendKeys(protractor.Key.PAGE_DOWN).perform();
 		browser.driver.wait(function () {
 			return browser.driver.isElementPresent(by.xpath('.//*[text()="' + product + '"]/following-sibling::div[@class="row"]//button[text()="Select"]'));
 		}, 20000);
 		browser.driver.findElement(by.xpath('.//*[text()="' + product + '"]/following-sibling::div[@class="row"]//button[text()="Select"]')).click();
+/*		browser.wait(new protractor.until.Condition('some condition', function () {
+			return browser.driver.findElement(by.xpath('.//*[text()="' + product + '"]/following-sibling::div[@class="row"]//button[text()="Select"]')).isDisplayed();
+		}), 20000).then(function(){
+			browser.driver.findElement(by.xpath('.//*[text()="' + product + '"]/following-sibling::div[@class="row"]//button[text()="Select"]')).click();
+		})*/
 	};
 
 	this.clickAddTextButton = function (){
-		browser.driver.wait(function () {
-			return browser.driver.isElementPresent(by.css('.add_item_text'));
-		}, 20000);
-		browser.driver.findElement(by.css('.add_item_text')).click();
+		commonFunctions.click(this.addTextButton);
 	};
 
 	//---form
 	this.editText = function (text) {
-		browser.driver.wait(function () {
-			return browser.driver.isElementPresent(by.css('.form-control.text-update'));
-		}, 20000);
-		browser.driver.findElement(by.css('.form-control.text-update')).clear();
-		browser.driver.findElement(by.css('.form-control.text-update')).sendKeys(text);
+		commonFunctions.sendKeys(this.editTextInput, text);
 	};
 
-
 	this.clickXOnForm = function () {
-		browser.driver.wait(function () {
-			return browser.driver.isElementPresent(by.css('.glyphicons.remove_2.glyphicons-12.pull-right'));
-		}, 20000);
-		browser.driver.findElement(by.css('.glyphicons.remove_2.glyphicons-12.pull-right')).click();
+		commonFunctions.click(this.XOnForm);
 	};
     //form---
 
     this.clickShowBackButton = function () {
-    	browser.driver.wait(function () {
-    		return browser.driver.isElementPresent(by.xpath('.//*[@class="box-thumb btn-show-back pull-left"]/span[contains(text(),"Back")]'));
-    	}, 20000);
-    	browser.driver.findElement(by.xpath('.//*[@class="box-thumb btn-show-back pull-left"]/span[contains(text(),"Back")]')).click();
+    	commonFunctions.click(this.showBackButton);    	
     };
 
     this.clickShowFrontButton = function () {
-    	browser.driver.wait(function () {
-    		return browser.driver.isElementPresent(by.xpath('.//*[@class="box-thumb btn-show-back pull-left"]/span[contains(text(),"Front")]'));
-    	}, 20000);
-    	browser.driver.findElement(by.xpath('.//*[@class="box-thumb btn-show-back pull-left"]/span[contains(text(),"Front")]')).click();
+    	commonFunctions.click(this.showFrontButton);
     };
 
     this.clickNextButton = function () {
-    	browser.driver.findElement(by.xpath(".//*[@class='align-center']//*[@class='btn green-meadow btn-md']")).click();
+    	commonFunctions.click(this.nextButton);    	
     };
 
-    this.clickChooseProductButton = function () {
-    	browser.driver.findElement(by.xpath(".//a[contains(text(),'Choose Product')]")).click(); 
+    this.clickChooseProductButton = function () {    	
+    	commonFunctions.click(this.chooseProductButton);
+    };
+
+    this.clickClearAllButton  = function() {
+    	commonFunctions.click(this.clearAll);
     };
 }
 
