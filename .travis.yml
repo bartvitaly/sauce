@@ -1,6 +1,6 @@
 --- 
 addons: 
-  firefox: "43.0"
+  firefox: "39.0.3"
 android: 
   components: 
   licenses: 
