@@ -96,11 +96,11 @@ describe("Smoke test", function() {
 
 	it("Choose a product ", function() {
 		console.log('choose a product ');
-		browser.sleep(5000);
-		element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div")).click();
+/*		element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div")).click();
 		browser.actions().mouseDown(element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div"))).perform();
 		browser.actions().mouseMove({x:0, y:100}).perform();
-		browser.actions().mouseUp().perform();
+		browser.actions().mouseUp().perform();*/
+		browser.actions().mouseDown(element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div"))).mouseMove({x:0, y:100}).mouseUp().perform();
 		//browser.sleep(4000);
 
 		designBetaPage.chooseProduct();
