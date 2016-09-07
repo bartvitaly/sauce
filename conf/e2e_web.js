@@ -43,9 +43,11 @@ exports.config = {
 				consolidateAll : true
 			}));
 			browser.ignoreSynchronization = true;
+			browser.manage().window().maximize();
 			browser.manage().timeouts().setScriptTimeout(timeout);
 			browser.manage().timeouts().pageLoadTimeout(timeout);
 			browser.manage().timeouts().implicitlyWait(timeout);
+
 			browser.manage().deleteAllCookies();
 		});
 	},
