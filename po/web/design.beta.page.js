@@ -55,8 +55,8 @@ var designBetaPage = function() {
 	};
 
 	this.chooseProduct = function(product) {
-		commonFunctions.click(this.product);
-		browser.driver.actions().sendKeys(protractor.Key.PAGE_DOWN).perform();
+		//commonFunctions.click(this.product);
+		//browser.driver.actions().sendKeys(protractor.Key.PAGE_DOWN).perform();
 		commonFunctions.click(this.selectProduct);
 	};
 

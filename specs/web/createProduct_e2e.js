@@ -29,14 +29,14 @@ describe("Smoke test", function() {
 		 * ,"Women\'s Tank Top", "Women\'s Tank Top", "Women\'s Flowy Tank",
 		 * "Reversible Mesh Tank"];
 		 */
-		var tankTops = new productCategory("Tank Tops", products);
-		products = [ "Mens V-Neck", "Women\'s V-Neck" ];
-		var vNecks = new productCategory("V-Necks", products);
-		products = [ "Coffee Mug", "Color Coffee Mug" ];
-		var mugs = new productCategory("Mugs", products);
-		products = [ "Gildan Kids" ];
-		var kids = new productCategory("Kids", products);
-		products = [ "Sublimation Tee", "Sublimation Tank", "Flip Flops White" ]
+		 var tankTops = new productCategory("Tank Tops", products);
+		 products = [ "Mens V-Neck", "Women\'s V-Neck" ];
+		 var vNecks = new productCategory("V-Necks", products);
+		 products = [ "Coffee Mug", "Color Coffee Mug" ];
+		 var mugs = new productCategory("Mugs", products);
+		 products = [ "Gildan Kids" ];
+		 var kids = new productCategory("Kids", products);
+		 products = [ "Sublimation Tee", "Sublimation Tank", "Flip Flops White" ]
 		// "Flip Flops Black",
 		// "8\" Round Wall Clock",
 		// "Laptop Sleeve"];
@@ -80,7 +80,7 @@ describe("Smoke test", function() {
 				additionalProductCategories.splice(i, 1);
 				break;
 			}
-		var shuffledAdditionalCategory = underscore.shuffle(additionalProductCategories);
+			var shuffledAdditionalCategory = underscore.shuffle(additionalProductCategories);
 		additionalCategory = vNecks// shuffledAdditionalCategory[0];
 		additionalProduct = additionalCategory.products[0];
 		console.log("additionalCategory: " + additionalCategory.category);
@@ -96,6 +96,11 @@ describe("Smoke test", function() {
 
 	it("Choose a product ", function() {
 		console.log('choose a product ');
+		browser.actions().mouseDown(element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div"))).perform();
+		browser.actions().mouseMove({x:0, y:100}).perform();
+		browser.actions().mouseUp().perform();
+		//browser.sleep(4000);
+
 		designBetaPage.chooseProduct();
 
 	});
