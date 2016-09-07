@@ -100,6 +100,8 @@ describe("Smoke test", function() {
 		browser.actions().mouseDown(element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div"))).perform();
 		browser.actions().mouseMove({x:0, y:100}).perform();
 		browser.actions().mouseUp().perform();*/
+		browser.driver.manage().window().getSize().then(function(size){console.log(size)});
+
 		browser.actions().mouseDown(element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div"))).mouseMove({x:0, y:100}).mouseUp().perform();
 		//browser.sleep(4000);
 
