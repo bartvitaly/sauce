@@ -10,7 +10,7 @@ describe("Smoke test", function() {
 	var random;
 
 	beforeAll(function() {
-		browser.driver.manage().window().maximize();
+		//browser.driver.manage().window().maximize();
 		browser.driver.get(browser.baseUrl + "/design.beta#designer");
 	});
 
