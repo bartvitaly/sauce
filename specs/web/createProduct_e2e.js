@@ -102,6 +102,7 @@ describe("Smoke test", function() {
 		rowser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
 		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
 		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
+		browser.sleep(5000);
 		browser.actions().mouseDown(element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div"))).mouseMove({x:0, y:100}).mouseUp().perform();
 		designBetaPage.chooseProduct();
 	});
