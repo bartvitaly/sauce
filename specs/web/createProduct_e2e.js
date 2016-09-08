@@ -10,7 +10,6 @@ describe("Smoke test", function() {
 	var random;
 
 	beforeAll(function() {
-		//browser.driver.manage().window().maximize();
 		browser.driver.get(browser.baseUrl + "/design.beta#designer");
 	});
 
@@ -96,17 +95,11 @@ describe("Smoke test", function() {
 
 	it("Choose a product ", function() {
 		console.log('choose a product ');
-/*		element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div")).click();
-		browser.actions().mouseDown(element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div"))).perform();
-		browser.actions().mouseMove({x:0, y:100}).perform();
-		browser.actions().mouseUp().perform();*/
-		browser.driver.manage().window().getSize().then(function(size){console.log(size)});
-
+		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
+		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
+		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
 		browser.actions().mouseDown(element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div"))).mouseMove({x:0, y:100}).mouseUp().perform();
-		//browser.sleep(4000);
-
 		designBetaPage.chooseProduct();
-
 	});
 
 	it("Add Additional products", function() {

@@ -43,10 +43,6 @@ exports.config = {
 				consolidateAll : true
 			}));
 			browser.ignoreSynchronization = true;
-			/*browser.manage().window().maximize();*/
-			var width = 1301;
-			var height = 744;
-			browser.manage().window().setSize(width, height);
 			browser.manage().timeouts().setScriptTimeout(timeout);
 			browser.manage().timeouts().pageLoadTimeout(timeout);
 			browser.manage().timeouts().implicitlyWait(timeout);
