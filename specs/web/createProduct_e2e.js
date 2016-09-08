@@ -101,6 +101,7 @@ describe("Smoke test", function() {
 		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
 		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
 		browser.actions().mouseDown(element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div"))).mouseMove({x:0, y:100}).mouseUp().perform();
+		browser.sleep(2000);
 		designBetaPage.chooseProduct();
 	});
 
