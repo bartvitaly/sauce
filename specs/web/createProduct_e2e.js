@@ -109,8 +109,8 @@ describe("Smoke test", function() {
 		console.log('click add text button');
 		designBetaPage.clickAddTextButton();
 
-		designBetaPage.clickNextButton();
-		pricingAndProducts.clickNextButton();
+	//	designBetaPage.clickNextButton();
+	//	pricingAndProducts.clickNextButton();
 	});
 
 	xit("login", function() {
