@@ -10,6 +10,8 @@ describe("Smoke test", function() {
 	var random;
 
 	beforeAll(function() {
+//browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
+		//browser.driver.manage().window().maximize();
 		browser.driver.get(browser.baseUrl + "/design.beta#designer");
 	});
 
@@ -96,13 +98,8 @@ describe("Smoke test", function() {
 	it("Choose a product ", function() {
 		console.log('choose a product ');
 		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
-		rowser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
-		rowser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
-		rowser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
-		rowser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
 		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
 		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
-		browser.sleep(5000);
 		browser.actions().mouseDown(element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div"))).mouseMove({x:0, y:100}).mouseUp().perform();
 		designBetaPage.chooseProduct();
 	});
