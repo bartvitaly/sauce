@@ -113,14 +113,14 @@ describe("Smoke test", function() {
 		pricingAndProducts.clickNextButton();
 	});
 
-	it("login", function() {
+	xit("login", function() {
 		// login
 		loginPage.login(browser.params.user.email, browser.params.user.password);
 
 		pricingAndProducts.clickNextButton();
 	});
 
-	it("check launch", function() {
+	xit("check launch", function() {
 
 		launchPage.typeCampaignTitle(Math.floor(Date.now() / 1000));
 		launchPage.typeDescription(Math.floor(Date.now() / 1000));
