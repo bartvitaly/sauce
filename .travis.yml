@@ -27,7 +27,6 @@ before_script:
   - "npm install -g wd"
   - "npm install -g wd-bridge"
   - "npm install jasmine-reporters"
-  - "npm install -g chrome"
   - "npm install mkdirp"
   - "npm install math"
   - "npm install properties-reader"
@@ -39,7 +38,6 @@ before_script:
 cache: false
 jdk: oraclejdk7
 language: android
-script: 
-  - "adb shell input keyevent 82 &"
+script:
   - "protractor conf/e2e_mobile.js"
 sudo: false
