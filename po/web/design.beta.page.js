@@ -26,23 +26,26 @@ var designBetaPage = function() {
 		 * browser.driver.findElement(by.xpath('(.//*[text()="' +
 		 * productCategory + '"])[1]')).click(); })
 		 */
-		browser.driver.wait(function() {
+/*		browser.driver.wait(function() {
 			return browser.driver.isElementPresent(by.xpath('(.//*[text()="' + productCategory + '"])[1]'));
 		}, 20000);
-		browser.driver.findElement(by.xpath('(.//*[text()="' + productCategory + '"])[1]')).click();
+		browser.driver.findElement(by.xpath('(.//*[text()="' + productCategory + '"])[1]')).click();*/
+		commonFunctions.click(by.xpath("(.//*[text()='Short Sleeves'])[1]"));
+	
 	};
 
 	this.chooseAProduct = function(product) {
 		element(by.css('#mCSB_2_container>div:nth-of-type(1)')).click();
 		browser.driver.actions().sendKeys(protractor.Key.PAGE_DOWN).perform();
-		browser.driver.wait(function() {
+		commonFunctions.click(by.xpath("(.//*[@class='btn btn-success btn-block'])[1]"));
+/*		browser.driver.wait(function() {
 			return browser.driver.isElementPresent(by.xpath('.//*[text()="' + product
 					+ '"]/following-sibling::div[@class="row"]//button[text()="Select"]'));
 		}, 20000);
 		browser.driver.findElement(
 				by
 						.xpath('.//*[text()="' + product
-								+ '"]/following-sibling::div[@class="row"]//button[text()="Select"]')).click();
+								+ '"]/following-sibling::div[@class="row"]//button[text()="Select"]')).click();*/
 		/*
 		 * browser.wait(new protractor.until.Condition('some condition',
 		 * function () { return
