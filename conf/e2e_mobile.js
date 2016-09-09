@@ -75,7 +75,6 @@ exports.config = {
 			}));
 			browser.ignoreSynchronization = true;
 			browser.manage().timeouts().setScriptTimeout(timeout);
-			browser.manage().timeouts().pageLoadTimeout(timeout);
 			browser.manage().timeouts().implicitlyWait(timeout);
 			browser.manage().deleteAllCookies();
 		});
