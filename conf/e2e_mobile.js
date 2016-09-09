@@ -6,14 +6,14 @@
  * @bartvitaly
  */
 
-var timeout = 90000;
+var timeout = 120000;
 
 exports.config = {
 
 	capabilities : {
 		'newCommandTimeout' : timeout / 1000,
 		'browserName' : 'Browser',
-		'deviceName' : 'nexus3_arm',
+		'deviceName' : 'test',
 		'platformName' : 'Android',
 		'platformVersion' : '5.1.1',
 		'udid' : 'emulator-5554'
@@ -25,8 +25,7 @@ exports.config = {
 
 	specs : [ '../specs/mobile/checkout_e2e.js' ],
 
-	baseUrl : 'https://release1.viralstyle.com', // https://release1.viralstyle.com,
-	// 52.40.217.139
+	baseUrl : 'https://release1.viralstyle.com',
 
 	params : {
 		prodUrl : 'https://viralstyle.com',
@@ -76,7 +75,7 @@ exports.config = {
 			}));
 			browser.ignoreSynchronization = true;
 			browser.manage().timeouts().setScriptTimeout(timeout);
-			// browser.manage().timeouts().pageLoadTimeout(timeout);
+			browser.manage().timeouts().pageLoadTimeout(timeout);
 			browser.manage().timeouts().implicitlyWait(timeout);
 			browser.manage().deleteAllCookies();
 		});
