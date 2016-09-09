@@ -110,18 +110,18 @@ describe("Smoke test", function() {
 		console.log('click add text button');
 		designBetaPage.clickAddTextButton();
 
-	//	designBetaPage.clickNextButton();
-	//	pricingAndProducts.clickNextButton();
+		designBetaPage.clickNextButton();
+		pricingAndProducts.clickNextButton();
 	});
 
-	xit("login", function() {
+	it("login", function() {
 		// login
 		loginPage.login(browser.params.user.email, browser.params.user.password);
 
 		pricingAndProducts.clickNextButton();
 	});
 
-	xit("check launch", function() {
+	it("check launch", function() {
 
 		launchPage.typeCampaignTitle(Math.floor(Date.now() / 1000));
 		launchPage.typeDescription(Math.floor(Date.now() / 1000));
