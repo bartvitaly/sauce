@@ -20,6 +20,7 @@ before_script:
   - "emulator -avd test -no-skin -no-audio -no-window -wipe-data&"
   - android-wait-for-emulator
   - "npm install -g chromedriver"
+  - "webdriver-manager update"
   - "npm install -g appium"
   - "appium &"
   - "npm install -g protractor"
@@ -27,15 +28,12 @@ before_script:
   - "npm install -g wd"
   - "npm install -g wd-bridge"
   - "npm install jasmine-reporters"
-  - "npm install -g chrome"
   - "npm install mkdirp"
   - "npm install math"
   - "npm install properties-reader"
   - "npm install properties"
   - "npm install path"
   - "npm install underscore"
-  - "npm install -g android"
-  - "webdriver-manager update"
 cache: false
 jdk: oraclejdk7
 language: android
