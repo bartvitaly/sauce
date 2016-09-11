@@ -1,42 +1,44 @@
 --- 
+addons: 
+  firefox: "39.0"
 android: 
   components: 
-    - platform-tools
-    - tools
     - build-tools-22.0.1
     - android-22
     - sys-img-armeabi-v7a-android-22
     - add-on
     - extra
-    - extra-android-support
   licenses: 
     - android-sdk-preview-license-52d11cd2
     - android-sdk-license-.+
     - google-gdk-license-.+
-before_script: 
+before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - "echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a"
-  - "emulator -avd test -no-skin -no-audio -memory 1024 -partition-size 1024 -no-boot-anim"
+  - "emulator -avd test -no-skin -no-audio -no-window -wipe-data&"
   - android-wait-for-emulator
-  - "adb shell input keyevent 82 &"
   - "npm install -g appium"
   - "appium &"
   - "npm install -g chromedriver"
-  - "webdriver-manager update"
   - "npm install -g protractor"
+  - "npm install -g protractor-html-screenshot-reporter"
   - "npm install -g wd"
   - "npm install -g wd-bridge"
   - "npm install jasmine-reporters"
+  - "npm install -g chrome"
   - "npm install mkdirp"
   - "npm install math"
   - "npm install properties-reader"
   - "npm install properties"
   - "npm install path"
   - "npm install underscore"
+  - "npm install -g android"
+  - "webdriver-manager update"
 cache: false
 jdk: oraclejdk7
 language: android
 script: 
+  - "adb shell input keyevent 82 &"
   - "protractor conf/e2e_mobile.js"
 sudo: false
