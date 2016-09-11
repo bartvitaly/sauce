@@ -17,10 +17,9 @@ before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - "echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a"
-  - "emulator -avd test -no-skin -no-audio -no-window -wipe-data&"
+  - "emulator -avd test -no-skin -no-audio -no-window"
   - android-wait-for-emulator
   - "npm install -g chromedriver"
-  - "webdriver-manager update"
   - "npm install -g appium"
   - "appium &"
   - "npm install -g protractor"
