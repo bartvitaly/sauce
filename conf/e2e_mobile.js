@@ -38,7 +38,6 @@ exports.config = {
 		user : {
 			firstName : 'FName',
 			lastName : 'LName',
-			// email : 'user1470859622821@mailinator.com', // prod2
 			email : 'user1472879445463@mailinator.com', // release1, release2
 			password : 'strange!'
 		},
