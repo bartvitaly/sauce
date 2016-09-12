@@ -13,12 +13,12 @@ android:
     - android-sdk-license-.+
     - google-gdk-license-.+
 before_script:
-  - "nvm install node 5"
+  - "nvm install node 4"
+  - "echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a"
+  - "emulator -avd test -no-audio -no-window -no-skin"
+  - android-wait-for-emulator
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-  - "echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a"
-  - "emulator -avd test -no-audio -no-window -noskin"
-  - android-wait-for-emulator
   - "npm install -g chromedriver"
   - "npm install -g appium"
   - "appium &"
