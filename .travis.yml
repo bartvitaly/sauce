@@ -13,6 +13,11 @@ android:
     - android-sdk-license-.+
     - google-gdk-license-.+
 before_script:
+  - "cd ~"
+  - "ls -la"
+  - "cd .travis"
+  - "ls -la"
+  - "cd sauce"
   - "ls -la"
 cache: false
 jdk: oraclejdk7
