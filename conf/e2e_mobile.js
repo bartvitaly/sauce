@@ -23,7 +23,7 @@ exports.config = {
 
 	allScriptsTimeout : timeout,
 
-	specs : [ '../specs/mobile/checkout_e2e.js' ],
+	specs : [ '../specs/mobile/product.js' ],
 
 	baseUrl : 'https://release1.viralstyle.com',
 
