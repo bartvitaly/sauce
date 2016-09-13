@@ -3,9 +3,9 @@ android:
   components:
     - platform-tools		
     - tools
-    - build-tools-23.0.3
-    - android-23
-    - sys-img-armeabi-v7a-android-23
+    - build-tools-22.0.1
+    - android-22
+    - sys-img-armeabi-v7a-android-22
     - add-on
     - extra
   licenses: 
@@ -14,12 +14,12 @@ android:
     - google-gdk-license-.+
 before_script:
   - "nvm install node 4"
+  - "echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a"
+  - "emulator -avd test -no-audio -no-skin -no-window -gpu off -wipe-data&"
+  - android-wait-for-emulator
   - "npm install -g chromedriver"
   - "npm install -g appium"
-  - "nohup xvfb-run -a appium &"
-  - "echo no | android create avd --force -n test -t android-23 --abi armeabi-v7a"
-  - "emulator -avd test -no-audio -no-skin -no-window &"
-  - android-wait-for-emulator
+  - "nohup xvfb-run appium &"
   - "npm install -g protractor"
   - "npm install -g protractor-html-screenshot-reporter"
   - "npm install -g wd"
@@ -33,11 +33,12 @@ before_script:
   - "npm install underscore"
   - "npm install -g android"
   - "webdriver-manager update"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 cache: false
 jdk: oraclejdk7
 language: android
-script:
-  - "adb devices -l"
+script: 
   - "adb shell input keyevent 82 &"
   - "protractor conf/e2e_mobile.js"
 sudo: false
