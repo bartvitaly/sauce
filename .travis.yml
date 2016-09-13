@@ -19,7 +19,7 @@ before_script:
   - android-wait-for-emulator
   - "npm install -g chromedriver"
   - "npm install -g appium"
-  - "xvfb-run appium &"
+  - "nohup xvfb-run appium &"
   - "npm install -g protractor"
   - "npm install -g protractor-html-screenshot-reporter"
   - "npm install -g wd"

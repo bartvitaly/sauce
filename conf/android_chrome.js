@@ -23,7 +23,7 @@ exports.config = {
 
 	allScriptsTimeout : timeout,
 
-	specs : [ '../specs/mobile/checkout_upsell.js' ],
+	specs : [ '../specs/mobile/signup.js' ],
 
 	baseUrl : 'https://release1.viralstyle.com', // https://release1.viralstyle.com,
 	// 52.40.217.139
