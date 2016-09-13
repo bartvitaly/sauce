@@ -40,5 +40,6 @@ cache: false
 jdk: oraclejdk7
 language: android
 script: 
+  - "adb shell input keyevent 82 &"
   - "protractor conf/e2e_mobile.js"
 sudo: false
