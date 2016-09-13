@@ -3,7 +3,7 @@ addons:
   firefox: "43.0"
 android: 
   components: 
-    - build-tools-24.3.4
+    - build-tools-25.1.6
     - android-22
     - sys-img-armeabi-v7a-android-22
     - add-on
