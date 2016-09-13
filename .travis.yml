@@ -20,6 +20,7 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - "npm install -g appium"
   - "nohup appium &"
+  - "npm install -g chromedriver"
   - "npm install -g protractor"
   - "npm install -g protractor-html-screenshot-reporter"
   - "npm install -g wd"
@@ -31,7 +32,6 @@ before_script:
   - "npm install properties"
   - "npm install path"
   - "npm install underscore"
-  - "npm install chromedriver"
   - "npm install -g android"
   - "webdriver-manager update"
 cache: false
