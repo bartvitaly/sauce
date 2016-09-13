@@ -9,7 +9,7 @@ exports.config = {
 		'browserName' : 'firefox'
 	},
 	framework : 'jasmine',
-	specs : [ '../specs/web/createProduct.js' ],
+	specs : [ '../specs/web/createProductWithUpsell.js' ],
 
 	params : {
 		user : {

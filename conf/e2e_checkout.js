@@ -15,12 +15,10 @@ exports.config = {
 	capabilities : {
 		'newCommandTimeout' : timeout / 1000,
 		'browserName' : 'Browser',
-		'deviceName' : 'nexus3_x86',
+		'deviceName' : 'test',
 		'platformName' : 'Android',
 		'platformVersion' : '5.1.1',
-		'udid' : 'emulator-5554',
-		'autoWebview' : true,
-		'autoWebviewTimeout' : timeout
+		'udid' : 'emulator-5554'
 	},
 
 	seleniumAddress : 'http://localhost:4723/wd/hub',

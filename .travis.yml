@@ -1,6 +1,6 @@
 --- 
 addons: 
-  firefox: "39.0"
+  firefox: "43.0"
 android: 
   components:
     - platform-tools		
