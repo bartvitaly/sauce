@@ -16,7 +16,7 @@ exports.config = {
 		'deviceName' : 'nexus3_arm',
 		'platformName' : 'Android',
 		'platformVersion' : '5.1.1',
-		'udid' : 'emulator-5554'
+		'udid' : 'emulator-5556'
 	},
 
 	seleniumAddress : 'http://localhost:4723/wd/hub',
@@ -74,9 +74,9 @@ exports.config = {
 				savePath : newFolder,
 				consolidateAll : true
 			}));
-			browser.ignoreSynchronization = true;
+			browser.ignoreSynchronization = false;
 			browser.manage().timeouts().setScriptTimeout(timeout);
-			// browser.manage().timeouts().pageLoadTimeout(timeout);
+			browser.manage().timeouts().pageLoadTimeout(timeout);
 			browser.manage().timeouts().implicitlyWait(timeout);
 			browser.manage().deleteAllCookies();
 		});
