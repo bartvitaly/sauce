@@ -13,10 +13,11 @@ android:
     - android-sdk-license-.+
     - google-gdk-license-.+
 before_script:
-  - "nvm install node 4"
+  - "nvm install node 5"
   - "echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a"
   - "emulator -avd test -no-audio -no-skin -no-window -gpu off -wipe-data&"
   - android-wait-for-emulator
+  - "adb shell input keyevent 82 &"
   - "npm install -g chromedriver"
   - "npm install -g appium"
   - "nohup xvfb-run appium &"
@@ -39,6 +40,5 @@ cache: false
 jdk: oraclejdk7
 language: android
 script: 
-  - "adb shell input keyevent 82 &"
   - "protractor conf/e2e_mobile.js"
 sudo: false
