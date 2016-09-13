@@ -43,7 +43,7 @@ var orderSummaryPage = function() {
 
 	this.checkOrder = function(order) {
 		common.checkText(this.title, 'ORDER SUMMARY', false);
-		common.checkAttribute(this.orderImage, 'src', 'front', true);
+//		common.checkAttribute(this.orderImage, 'src', 'front', true);
 
 		if (order.number != null && order.number != '') {
 			common.checkText(this.orderNumber, 'ORDER# ' + order.number, true);
@@ -62,7 +62,7 @@ var orderSummaryPage = function() {
 		common.checkText(this.address, shipping.address, true);
 		common.checkText(this.address, shipping.aptSuite, true);
 		common.checkText(this.address, shipping.city, true);
-		common.checkText(this.address, shipping.state, true);
+		common.checkText(this.address, shipping.stateShort, true);
 		common.checkText(this.address, shipping.zipCode, true);
 		common.checkText(this.address, shipping.countryShort, true);
 	}

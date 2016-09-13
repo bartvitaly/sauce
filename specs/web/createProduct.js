@@ -155,7 +155,7 @@ describe("Smoke test", function() {
 
 		// Save a product url to a file
 		launchPage.getURL().then(function(url) {
-			common.saveProductUrl(url);
+			common.saveProductUrl("url.product", url);
 		});
 
 		launchPage.clickAcceptTermsCheckBox();

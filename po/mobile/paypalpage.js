@@ -6,7 +6,7 @@
  * @bartvitaly
  */
 
-var commonFunctions = require('../../common/common.js');
+var common = require('../../common/common.js');
 
 var paypalPage = function() {
 
@@ -40,24 +40,24 @@ var paypalPage = function() {
 
 	// login method
 	this.login = function() {
-		commonFunctions.switchToFrame(this.frame);
-		commonFunctions.sendKeys(this.email, browser.params.paypalEmail);
-		commonFunctions.sendKeys(this.password, browser.params.paypalPassword);
-		commonFunctions.click(this.loginButton);
-		commonFunctions.switchToDefault();
+		common.switchToFrame(this.frame);
+		common.sendKeys(this.email, common.getProperty("paypal.email"));
+		common.sendKeys(this.password, common.getProperty("paypal.password"));
+		common.click(this.loginButton);
+		common.switchToDefault();
 	};
 
 	// login method
 	this.clickContinueButton = function() {
-		commonFunctions.click(this.continueButton);
+		common.click(this.continueButton);
 	};
 
 	this.checkAmount = function(amountExpected) {
-		commonFunctions.checkText(this.amount, amountExpected, true);
+		common.checkText(this.amount, amountExpected, true);
 	};
 
 	this.checkBalance = function(balanceExpected) {
-		commonFunctions.checkText(this.paypalBalance, balanceExpected, true);
+		common.checkText(this.paypalBalance, balanceExpected, true);
 	};
 
 	// Checking of order name and price
@@ -67,31 +67,33 @@ var paypalPage = function() {
 		var nameItem = by.css(cardItem + ' ' + this.name);
 		var priceItem = by.css(cardItem + ' ' + this.price);
 
-		commonFunctions.checkText(nameItem, order.name, true);
+		common.checkText(nameItem, order.name, true);
 
-		commonFunctions.getNumber(priceItem).then(function(priceActual) {
+		common.getNumber(priceItem).then(function(priceActual) {
 			expect(parseFloat(priceActual) > 0).toBe(true);
 			console.log('Checking price: ' + priceActual);
 		});
 	};
 
 	// Checking of amount, total, shipping, subTotal values
-	this.checkAmountsNotZero = function() {
-		commonFunctions.getNumber(this.amount).then(function(amountActual) {
+	this.checkAmountsNotZero = function(promo) {
+		common.getNumber(this.amount).then(function(amountActual) {
 			expect(parseFloat(amountActual) > 0).toBe(true);
 		});
 
-		commonFunctions.getNumber(this.total).then(function(totalActual) {
+		common.getNumber(this.total).then(function(totalActual) {
 			expect(parseFloat(totalActual) > 0).toBe(true);
 			console.log('Checking total: ' + totalActual);
 		});
 
-		commonFunctions.getNumber(this.shipping).then(function(shippingActual) {
-			expect(parseFloat(shippingActual) > 0).toBe(true);
-			console.log('Checking shipping: ' + shippingActual);
-		});
+		if (promo != true) {
+			common.getNumber(this.shipping).then(function(shippingActual) {
+				expect(parseFloat(shippingActual) > 0).toBe(true);
+				console.log('Checking shipping: ' + shippingActual);
+			});
+		}
 
-		commonFunctions.getNumber(this.subTotal).then(function(subTotalActual) {
+		common.getNumber(this.subTotal).then(function(subTotalActual) {
 			expect(parseFloat(subTotalActual) > 0).toBe(true);
 			console.log('Checking subTotal: ' + subTotalActual);
 		});

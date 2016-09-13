@@ -6,58 +6,37 @@
  * @bartvitaly
  */
 
-var timeout = 90000;
+var common = require('../common/common.js');
+
+var timeout = 120000;
 
 exports.config = {
 
 	capabilities : {
 		'newCommandTimeout' : timeout / 1000,
 		'browserName' : 'Browser',
-		'deviceName' : 'nexus3_arm',
+		'deviceName' : 'nexus3_x86',
 		'platformName' : 'Android',
 		'platformVersion' : '5.1.1',
-		'udid' : 'emulator-5556'
+		'udid' : 'emulator-5554',
+		'autoWebview' : true,
+		'autoWebviewTimeout' : timeout
 	},
 
 	seleniumAddress : 'http://localhost:4723/wd/hub',
 
 	allScriptsTimeout : timeout,
 
-	specs : [ '../specs/mobile/signup.js' ],
+	specs : [ '../specs/mobile/checkout_coupon.js' ],
 
-	baseUrl : 'https://release1.viralstyle.com', // https://release1.viralstyle.com,
-	// 52.40.217.139
+	baseUrl : common.getProperty("url.test"),
 
 	params : {
-		prodUrl : 'https://viralstyle.com',
-
-		propertiesFile : 'properties.txt',
-
-		paypalEmail : 'qa-paypal@viralstyle.com',
-		paypalPassword : '12345678',
-
-		user : {
-			firstName : 'FName',
-			lastName : 'LName',
-			// email : 'user1470859622821@mailinator.com', // prod2
-			email : 'user1472879445463@mailinator.com', // release1, release2
-			password : 'strange!'
-		},
 		order : {
-			productUrl : '/user1468255815672/1470940818', // 1471041994
-			// 1470940818
 			size : 'S',
 			quantity : '1',
 			name : ''
 		},
-		coupon : {
-			code : 'discount_3',
-			value : 0.03
-		},
-		upsell : {
-			productUrl : '/user1468255815672/product3',
-			discount : 0.05
-		}
 	},
 
 	frameworks : 'jasmine2',
@@ -74,7 +53,7 @@ exports.config = {
 				savePath : newFolder,
 				consolidateAll : true
 			}));
-			browser.ignoreSynchronization = false;
+			browser.ignoreSynchronization = true;
 			browser.manage().timeouts().setScriptTimeout(timeout);
 			browser.manage().timeouts().pageLoadTimeout(timeout);
 			browser.manage().timeouts().implicitlyWait(timeout);

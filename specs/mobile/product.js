@@ -15,8 +15,8 @@ describe('product', function() {
 
 	var price = 0;
 
-	var couponName = browser.params.coupon.code;
-	var couponValue = browser.params.coupon.value;
+	var couponName = common.getProperty("coupon.code");
+	var couponValue = common.getProperty("coupon.value");
 
 	it('1. Open product page.', function() {
 		console.log('Open product page');

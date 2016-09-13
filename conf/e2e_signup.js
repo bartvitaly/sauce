@@ -6,14 +6,14 @@
  * @bartvitaly
  */
 
-var timeout = 300000;
+var timeout = 90000;
 
 exports.config = {
 
 	capabilities : {
 		'newCommandTimeout' : timeout / 1000,
 		'browserName' : 'Browser',
-		'deviceName' : 'test',
+		'deviceName' : 'nexus3_arm',
 		'platformName' : 'Android',
 		'platformVersion' : '5.1.1',
 		'udid' : 'emulator-5554'
@@ -25,12 +25,9 @@ exports.config = {
 
 	specs : [ '../specs/mobile/signup.js' ],
 
-	baseUrl : 'https://release1.viralstyle.com',
+	baseUrl : common.getProperty("url.test"),
 
 	params : {
-		prodUrl : 'https://viralstyle.com',
-
-		propertiesFile : 'properties.txt',
 
 		paypalEmail : 'qa-paypal@viralstyle.com',
 		paypalPassword : '12345678',
@@ -38,24 +35,15 @@ exports.config = {
 		user : {
 			firstName : 'FName',
 			lastName : 'LName',
-			email : 'user1472879445463@mailinator.com', // release1, release2
+			email : 'user1472879445463@mailinator.com',
 			password : 'strange!'
 		},
 		order : {
-			productUrl : '/user1468255815672/1470940818', // 1471041994
-			// 1470940818
+			productUrl : '/user1468255815672/1470940818',
 			size : 'S',
 			quantity : '1',
 			name : ''
 		},
-		coupon : {
-			code : 'discount_3',
-			value : 0.03
-		},
-		upsell : {
-			productUrl : '/user1468255815672/product3',
-			discount : 0.05
-		}
 	},
 
 	frameworks : 'jasmine2',
@@ -74,7 +62,7 @@ exports.config = {
 			}));
 			browser.ignoreSynchronization = true;
 			browser.manage().timeouts().setScriptTimeout(timeout);
-			browser.manage().timeouts().pageLoadTimeout(timeout);
+			// browser.manage().timeouts().pageLoadTimeout(timeout);
 			browser.manage().timeouts().implicitlyWait(timeout);
 			browser.manage().deleteAllCookies();
 		});

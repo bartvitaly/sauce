@@ -1,11 +1,8 @@
-var PropertiesReader = require('properties-reader');
-console.log(__dirname.replace('specs\\mobile', ''));
+var common = require('../../common/common.js');
 
-var properties = PropertiesReader(__dirname.replace('specs\\mobile', '') + 'properties.file');
+var str = "https://ew693j-vs-dev-staging-viralstyle.runnableapp.com/user1473351026847/1473354109";
 
-properties.set('size', 'M');
-var property = properties.get('size');
-console.log(property);
+var last = str.split("/")[str.split("/").length - 1];
 
 // var webdriver = require('selenium-webdriver'), SeleniumServer =
 // require('selenium-webdriver/remote').SeleniumServer, assert =

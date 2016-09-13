@@ -1,3 +1,5 @@
+var common = require('../common/common.js');
+
 var timeout = 120000;
 exports.config = {
 
@@ -7,32 +9,21 @@ exports.config = {
 		'browserName' : 'firefox'
 	},
 	framework : 'jasmine',
-	specs : [ //'../specs/web/smoke.spec.js' 
-'../specs/web/createProductWithUpsell.js'
-	],
+	specs : [ '../specs/web/createProduct.js' ],
 
 	params : {
-		prodUrl : 'https://viralstyle.com',
-		upsellProduct:'',
-
-		propertiesFile : 'properties.txt',
-
 		user : {
-			firstName : 'FName',
-			lastName : 'LName',
-			// email : 'morozov_vadim@meta.ua', // live
-			// email : 'user1470859622821@mailinator.com', // prod2
-			email : 'user1472879445463@mailinator.com', // release1, release2
-			// password : 'qwertyuiop' // live
-			password : 'strange!' // prod2, release1, release2
+			email : common.getProperty("user.email"),
+			password : common.getProperty("user.password")
 		},
 	},
 
-	baseUrl : 'https://release1.viralstyle.com', //https://release1.viralstyle.com, 52.40.217.139
+	baseUrl : common.getProperty("url.test"),
 
 	onPrepare : function() {
 		var mkdirp = require('mkdirp');
-		var newFolder = "./reports/" + Date.now() + __filename.replace('.js', '').replace(__dirname + require('path').sep, '_');
+		var newFolder = "./reports/" + Date.now()
+				+ __filename.replace('.js', '').replace(__dirname + require('path').sep, '_');
 
 		var jasmineReporters = require('jasmine-reporters');
 		return browser.getProcessedConfig().then(function(config) {

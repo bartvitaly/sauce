@@ -42,7 +42,7 @@ var orderPage = function() {
 	this.dicountText = by.css(".modal-body .col-sm-7");
 	this.styleSelect = by.css("[ng-model='upsell.selectedGroup']");
 	this.upsellSize = by.css(".size-list li.active");
-	this.addToMyOrder = by.css("a.btn");
+	this.addToMyOrder = by.css("a.btn, [ng-click='paypalCheckout()'] .ng-scope");
 	this.continueShopping = by.css("a.return");
 
 	// Promo order
@@ -74,7 +74,7 @@ var orderPage = function() {
 		common.checkText(this.address, shipping.address, true);
 		common.checkText(this.address, shipping.aptSuite, true);
 		common.checkText(this.address, shipping.city, true);
-		common.checkText(this.address, shipping.state, true);
+		common.checkText(this.address, shipping.stateShort, true);
 		common.checkText(this.address, shipping.zipCode, true);
 		common.checkText(this.address, shipping.countryShort, true);
 	};

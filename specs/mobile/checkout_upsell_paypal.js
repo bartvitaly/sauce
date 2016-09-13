@@ -16,14 +16,12 @@ var checkoutPage = require('../../po/mobile/checkoutpage.js');
 var orderPage = require('../../po/mobile/orderpage.js');
 var orderSummaryPage = require('../../po/mobile/ordersummarypage.js');
 var trackOrderPage = require('../../po/mobile/trackorderpage.js');
+var paypalPage = require('../../po/mobile/paypalpage.js');
 
 var common = require('../../common/common.js');
 
 describe('checkout upsell', function() {
 
-	var shipping = new shippingInfo(user);
-	shipping.paypal();
-	
 	var price = 0;
 	var shippingPrice = 0.00;
 	var discount = 0;
@@ -35,24 +33,38 @@ describe('checkout upsell', function() {
 	var promoOrderNumber;
 	var subTotal;
 	var shipping = new shippingInfo(user);
-
+	shipping.paypal();
+	
 	it('1. Opening a product page.', function() {
 		browser.get(order.productUrl);
 		common.waitUrl(order.productUrl).then(function(urlCheck) {
 			console.log('Opening a product page.');
 			expect(urlCheck).toBe(true);
 			productPage.addOrderToCard(order);
-			productPage.payWithCard();
+			browser.refresh();
+			common.waitUrl(order.productUrl).then(function(urlCheck) {
+				productPage.payWithPaypal();
+			});
 		});
 	});
 
-	it('2. Fill all the required data to complete an order', function() {
-		common.waitUrl(checkoutPage.url).then(function(urlCheck) {
+	it('2. Log into paypal and confirm payment.', function() {
+		common.waitUrl(paypalPage.urlLogin).then(function(urlCheck) {
 			expect(urlCheck).toBe(true);
-			console.log('Fill all the required data to complete an order.');
-			checkoutPage.fillShippingInformation(shipping);
-			checkoutPage.fillPaymentInformation(shipping);
-			common.click(checkoutPage.completeOrder);
+			console.log('Loging in to paypal.');
+			paypalPage.login();
+
+			common.waitUrl(paypalPage.urlReview).then(function(urlCheck) {
+				expect(urlCheck).toBe(true);
+
+				common.click(paypalPage.amount);
+				paypalPage.checkCardItems(order);
+				paypalPage.checkAmountsNotZero();
+				common.click(paypalPage.closeCart);
+
+				console.log('Confirming payment');
+				paypalPage.clickContinueButton();
+			});
 		});
 	});
 
@@ -97,6 +109,18 @@ describe('checkout upsell', function() {
 
 			common.click(orderPage.addToMyOrder);
 
+			common.waitUrl(paypalPage.urlReview).then(function(urlCheck) {
+				expect(urlCheck).toBe(true);
+
+				common.click(paypalPage.amount);
+//				paypalPage.checkCardItems(order);
+				paypalPage.checkAmountsNotZero(true);
+				common.click(paypalPage.closeCart);
+
+				console.log('Confirming payment');
+				paypalPage.clickContinueButton();
+			});
+			
 			// Get upsell order
 			common.getTextPromise(orderPage.promoOrderNumber).then(function(orderNumber) {
 				promoOrderNumber = orderNumber.replace('YOUR PROMO ORDER# ', '');

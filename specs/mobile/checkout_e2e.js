@@ -19,8 +19,6 @@ var trackOrderPage = require('../../po/mobile/trackorderpage.js');
 var common = require('../../common/common.js');
 
 describe('E2E checkout test', function() {
-
-	var orderNumberRetrieved;
 	var shipping = new shippingInfo(user);
 
 	order.productUrl = common.getProductUrl();
@@ -53,8 +51,7 @@ describe('E2E checkout test', function() {
 			orderPage.checkOrder(order);
 			orderPage.checkShipping(shipping);
 			common.getTextPromise(orderPage.orderNumber).then(function(orderNumber) {
-				orderNumberRetrieved = orderNumber.replace('YOUR ORDER# ', '');
-				;
+				order.number = orderNumber.replace('YOUR ORDER# ', '');
 			});
 			common.click(orderPage.orderSummary);
 		});
@@ -63,9 +60,8 @@ describe('E2E checkout test', function() {
 	it('4. Check order, shipping details on the order summary page', function() {
 		common.waitUrl(browser.baseUrl + orderSummaryPage.url).then(function(urlCheck) {
 			expect(urlCheck).toBe(true);
-			console.log(orderNumberRetrieved);
+			console.log(order.number);
 			console.log('Check order, shipping details on the order summary page.');
-			order.number = orderNumberRetrieved;
 			orderSummaryPage.checkOrder(order);
 			orderSummaryPage.checkShipping(shipping);
 			common.click(orderSummaryPage.changeAddress);
