@@ -57,7 +57,7 @@ var orderPage = function() {
 
 	this.checkOrder = function(order) {
 		common.checkText(this.title, 'THANK YOU FOR YOUR ORDER.', false);
-		common.checkAttribute(this.orderImage, 'src', 'front', true);
+//		common.checkAttribute(this.orderImage, 'src', 'front', true);
 
 		common.checkText(this.orderNumber, 'YOUR ORDER# ', true);
 		common.checkText(this.orderSizeName, order.size, true);
