@@ -17,7 +17,6 @@ before_script:
   - "echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a"
   - "emulator -avd test -no-skin -no-audio -no-window"
   - android-wait-for-emulator
-  - "npm install chromedriver"
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - "npm install -g appium"
@@ -33,6 +32,7 @@ before_script:
   - "npm install properties"
   - "npm install path"
   - "npm install underscore"
+  - "npm install chromedriver"
   - "npm install -g android"
   - "webdriver-manager update"
 cache: false
