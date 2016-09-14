@@ -40,7 +40,7 @@ cache: false
 jdk: oraclejdk7
 language: android
 script:
-  - "nohup xvfb-run -a appium &"
+  - "xvfb-run -a appium | while read LOGLINE; do [[ "${LOGLINE}" == *"listener started"* ]] && pkill -P; $$ tail; done"
   - "adb shell input keyevent 82 &"
   - "protractor conf/e2e_checkout.js"
 sudo: false
