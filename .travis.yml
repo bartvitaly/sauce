@@ -16,12 +16,11 @@ android:
     - google-gdk-license-.+
 before_script:
   - "nvm install node 4"
+  - "npm install -g appium &"
   - "echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a"
   - "emulator -avd test -no-audio -no-skin -no-window -gpu off -wipe-data&"
   - android-wait-for-emulator
   - "npm install -g chromedriver"
-  - "npm install -g appium"
-  - "nohup xvfb-run -a appium &"
   - "npm install -g protractor"
   - "npm install -g protractor-html-screenshot-reporter"
   - "npm install -g wd"
@@ -41,7 +40,7 @@ cache: false
 jdk: oraclejdk7
 language: android
 script:
-  - "protractor conf/e2e_create.js"
+  - "nohup xvfb-run -a appium &"
   - "adb shell input keyevent 82 &"
   - "protractor conf/e2e_checkout.js"
 sudo: false
