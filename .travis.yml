@@ -42,7 +42,7 @@ language: android
 script:
   - "protractor conf/e2e_create.js"
   - "sh -e /etc/init.d/xvfb stop"
-  - "nohup xvfb-run -a appium &"
+  - "nohup xvfb-run appium --session-override &"
   - "sleep 1m"
   - "adb shell input keyevent 82 &"
   - "protractor conf/e2e_checkout.js"
