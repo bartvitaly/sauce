@@ -23,7 +23,7 @@ before_script:
   - "npm install -g chromedriver"
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-  - "nohup xvfb-run -a appium &"
+  - "nohup xvfb-run -a appium --session-override &"
   - "npm install -g protractor"
   - "npm install -g protractor-html-screenshot-reporter"
   - "npm install -g wd"
