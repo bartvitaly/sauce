@@ -2,8 +2,8 @@
 addons: 
   firefox: "43.0"
 android: 
-  components: 
-    - platform-tools
+  components:
+    - platform-tools		
     - tools
     - build-tools-22.0.1
     - android-22
@@ -14,15 +14,14 @@ android:
     - android-sdk-preview-license-52d11cd2
     - android-sdk-license-.+
     - google-gdk-license-.+
-before_script: 
+before_script:
   - "nvm install node 4"
-  - "npm install -g chromedriver"
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
   - "npm install -g appium &"
   - "echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a"
   - "emulator -avd test -no-audio -no-skin -no-window -gpu off -wipe-data&"
   - android-wait-for-emulator
+  - "npm install -g chromedriver"
+  - "nohup xvfb-run -a appium &"
   - "npm install -g protractor"
   - "npm install -g protractor-html-screenshot-reporter"
   - "npm install -g wd"
@@ -39,9 +38,8 @@ before_script:
 cache: false
 jdk: oraclejdk7
 language: android
-script: 
-  - "nohup xvfb-run -a appium --session-override &"
-  - "sleep 1m"
+script:
+  - "protractor conf/e2e_create.js"
   - "adb shell input keyevent 82 &"
   - "protractor conf/e2e_checkout.js"
 sudo: false
