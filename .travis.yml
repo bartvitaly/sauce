@@ -38,14 +38,14 @@ cache: false
 jdk: oraclejdk7
 language: android
 script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
   - "nohup xvfb-run -a appium --session-override &"
   - "sleep 1m"
   - "adb shell input keyevent 82 &"
   - "protractor conf/e2e_signup.js"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
   - "protractor conf/e2e_create.js"
-  - "export DISPLAY=:100.0"
+  - "sh -e /etc/init.d/xvfb stop"
   - "nohup xvfb-run -a appium --session-override &"
   - "sleep 1m"
   - "adb shell input keyevent 82 &"
