@@ -43,7 +43,7 @@ script:
   - "nohup xvfb-run -a appium --session-override &"
   - "sleep 1m"
   - "adb shell input keyevent 82 &"
-  - "protractor conf/signup.js"
+  - "protractor conf/e2e_signup.js"
   - "export DISPLAY=:100.0"
   - "sh -e /etc/init.d/xvfb start"
   - "protractor conf/e2e_create.js"
