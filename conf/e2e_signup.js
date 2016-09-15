@@ -15,7 +15,7 @@ exports.config = {
 	capabilities : {
 		'newCommandTimeout' : timeout / 1000,
 		'browserName' : 'Browser',
-		'deviceName' : 'nexus3_arm',
+		'deviceName' : 'test',
 		'platformName' : 'Android',
 		'platformVersion' : '5.1.1',
 		'udid' : 'emulator-5554'
@@ -28,14 +28,6 @@ exports.config = {
 	specs : [ '../specs/mobile/signup.js' ],
 
 	baseUrl : common.getProperty("url.test"),
-
-	params : {
-		order : {
-			size : 'S',
-			quantity : '1',
-			name : ''
-		},
-	},
 
 	frameworks : 'jasmine2',
 
