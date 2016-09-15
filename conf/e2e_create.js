@@ -1,6 +1,6 @@
 var common = require('../common/common.js');
 
-var timeout = 300000;
+var timeout = 120000;
 exports.config = {
 
 	allScriptsTimeout : timeout,

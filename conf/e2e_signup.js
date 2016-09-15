@@ -32,14 +32,7 @@ exports.config = {
 		paypalEmail : 'qa-paypal@viralstyle.com',
 		paypalPassword : '12345678',
 
-		user : {
-			firstName : 'FName',
-			lastName : 'LName',
-			email : 'user1472879445463@mailinator.com',
-			password : 'strange!'
-		},
 		order : {
-			productUrl : '/user1468255815672/1470940818',
 			size : 'S',
 			quantity : '1',
 			name : ''
@@ -60,9 +53,9 @@ exports.config = {
 				savePath : newFolder,
 				consolidateAll : true
 			}));
-			browser.ignoreSynchronization = true;
+			browser.ignoreSynchronization = false;
 			browser.manage().timeouts().setScriptTimeout(timeout);
-			// browser.manage().timeouts().pageLoadTimeout(timeout);
+			browser.manage().timeouts().pageLoadTimeout(timeout);
 			browser.manage().timeouts().implicitlyWait(timeout);
 			browser.manage().deleteAllCookies();
 		});
