@@ -20,19 +20,8 @@ var paypalPage = require('../../po/mobile/paypalpage.js');
 var common = require('../../common/common.js');
 
 describe('checkout paypal', function() {
-
-	var orderNumberRetrieved;
-
 	var shipping = new shippingInfo(user);
-	shipping.firstName = "Viralstyle";
-	shipping.lastName = "Tester";
-	shipping.address = '1 Main St';
-	shipping.aptSuite = '';
-	shipping.city = 'San Jose';
-	shipping.state = 'CA';
-	shipping.zipCode = '95131';
-	shipping.country = '';
-	shipping.countryShort = '';
+	shipping.paypal();
 
 	it('1. Opening a product page.', function() {
 		console.log('Opening a product page.');
@@ -74,8 +63,7 @@ describe('checkout paypal', function() {
 			orderPage.checkOrder(order);
 			orderPage.checkShipping(shipping);
 			common.getTextPromise(orderPage.orderNumber).then(function(orderNumber) {
-				orderNumberRetrieved = orderNumber.replace('YOUR ORDER# ', '');
-				;
+				order.number = orderNumber.replace('YOUR ORDER# ', '');
 			});
 			common.click(orderPage.orderSummary);
 		});
@@ -84,9 +72,8 @@ describe('checkout paypal', function() {
 	it('4. Check order, shipping details on the order summary page', function() {
 		common.waitUrl(browser.baseUrl + orderSummaryPage.url).then(function(urlCheck) {
 			expect(urlCheck).toBe(true);
-			console.log(orderNumberRetrieved);
+			console.log(order.number);
 			console.log('Check order, shipping details on the order summary page.');
-			order.number = orderNumberRetrieved;
 			orderSummaryPage.checkOrder(order);
 			orderSummaryPage.checkShipping(shipping);
 			common.click(orderSummaryPage.changeAddress);
@@ -98,7 +85,7 @@ describe('checkout paypal', function() {
 		browser.get(browser.baseUrl + trackOrderPage.url);
 		common.waitUrl(browser.baseUrl + trackOrderPage.url).then(function(urlVerified) {
 			expect(urlVerified).toBe(true);
-			trackOrderPage.track(orderNumberRetrieved, shipping.zipCode);
+			trackOrderPage.track(order.number, shipping.zipCode);
 		});
 	});
 

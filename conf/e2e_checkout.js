@@ -6,7 +6,9 @@
  * @bartvitaly
  */
 
-var timeout = 180000;
+var common = require('../common/common.js');
+
+var timeout = 600000;
 
 exports.config = {
 
@@ -23,40 +25,16 @@ exports.config = {
 
 	allScriptsTimeout : timeout,
 
-	specs : [ '../specs/checkout_e2e.js' ],
+	specs : [ '../specs/mobile/checkout_e2e.js' ],
 
-	baseUrl : 'https://release1.viralstyle.com', //https://release1.viralstyle.com, 52.40.217.139
+	baseUrl : common.getProperty("url.test"),
 
 	params : {
-		prodUrl : 'https://viralstyle.com',
-
-		propertiesFile : 'properties.txt',
-
-		paypalEmail : 'qa-paypal@viralstyle.com',
-		paypalPassword : '12345678',
-
-		user : {
-			firstName : 'user1468255815672',
-			lastName : 'user1468255815672',
-			// email : 'user1470859622821@mailinator.com', // prod2
-			email : 'user1468255815672@mailinator.com', // release1, release2
-			password : 'strange!'
-		},
 		order : {
-			productUrl : '/user1468255815672/1470940818', // 1471041994
-			// 1470940818
 			size : 'S',
 			quantity : '1',
 			name : ''
 		},
-		coupon : {
-			code : 'discount_3',
-			value : 0.03
-		},
-		upsell : {
-			productUrl : '/user1468255815672/product3',
-			discount : 0.05
-		}
 	},
 
 	frameworks : 'jasmine2',
@@ -73,9 +51,9 @@ exports.config = {
 				savePath : newFolder,
 				consolidateAll : true
 			}));
-			browser.ignoreSynchronization = true;
+			browser.ignoreSynchronization = false;
 			browser.manage().timeouts().setScriptTimeout(timeout);
-//			browser.manage().timeouts().pageLoadTimeout(timeout);
+			browser.manage().timeouts().pageLoadTimeout(timeout);
 			browser.manage().timeouts().implicitlyWait(timeout);
 			browser.manage().deleteAllCookies();
 		});

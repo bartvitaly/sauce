@@ -17,7 +17,8 @@ var shipping = function(user) {
 	this.aptSuite = 'app. 1';
 	this.city = 'city';
 	this.state = 'Florida (FL)';
-	this.zipCode = '123';
+	this.stateShort = 'FL';
+	this.zipCode = '12345';
 	this.country = 'Austria';
 	this.countryShort = 'AT';
 	this.phone = user.phone;
@@ -27,6 +28,19 @@ var shipping = function(user) {
 	this.expMonth = '1';
 	this.expYear = '2019';
 	this.cvv = '111';
+
+	this.paypal = function() {
+		this.firstName = "Viralstyle";
+		this.lastName = "Tester";
+		this.address = '1 Main St';
+		this.aptSuite = '';
+		this.city = 'San Jose';
+		this.state = 'CA';
+		this.stateShort = 'CA';
+		this.zipCode = '95131';
+		this.country = '';
+		this.countryShort = '';
+	};
 
 };
 

@@ -8,6 +8,9 @@
 
 var commonFunctions = function() {
 
+//	 var PROPERTIES_FILE = __dirname.replace('common', '') + "properties.file";
+	var PROPERTIES_FILE = __dirname.replace('common', '') + "release1.properties";
+
 	/**
 	 * 
 	 * Protractor specific functions
@@ -314,32 +317,73 @@ var commonFunctions = function() {
 	 */
 	this.waitUrl = function(urlExpected) {
 		var currentUrl;
-		return browser.getCurrentUrl().then(function storeCurrentUrl(url) {
+		return browser.getCurrentUrl().then(function(url) {
 			currentUrl = url;
 		}).then(function waitForUrlToChangeTo() {
 			return browser.wait(function waitForUrlToChangeTo() {
-				return browser.getCurrentUrl().then(function compareCurrentUrl(url) {
+				return browser.getCurrentUrl().then(function(url) {
 					browser.driver.sleep(2000);
 					var commonfunctions = new commonFunctions();
-					console.log(urlExpected + ' :expected actual: ' + currentUrl);
+					console.log(urlExpected + ' :expected actual: ' + url);
 					return commonfunctions.contains(url, urlExpected);
 				});
 			});
 		});
 	}
 
+	// Get property from a file
+	this.getProperty = function(key, file) {
+		if (file == null) {
+			file = PROPERTIES_FILE;
+		}
+		var PropertiesReader = require('properties-reader');
+		var properties = PropertiesReader(file);
+		return properties.get(key);
+	};
+
+	// Save property to a file
+	this.setProperty = function(key, value, file) {
+		var properties = require("properties");
+		if (file == null) {
+			file = PROPERTIES_FILE;
+		}
+
+		var options = {
+			path : file
+		};
+
+		properties.parse(file, {
+			path : true
+		}, function(error, obj) {
+			if (error)
+				return console.error(error);
+
+			var stringifier = properties.createStringifier();
+			obj[key] = value;
+
+			properties.stringify(obj, options, function(error, obj) {
+				if (error)
+					return console.error(error);
+			});
+		});
+	};
+
 	// Saves a product url to the properties file
-	this.saveProductUrl = function(url) {
-		var urlUpdated = url.replace(browser.params.prodUrl, browser.baseUrl).replace("http:", "https:");
-		var propertiesFile = __dirname.replace('common', '') + browser.params.propertiesFile;
-		this.writeFile(propertiesFile, urlUpdated);
+	this.saveProductUrl = function(key, url) {
+		var urlUpdated = url.replace(this.getProperty('url.live', PROPERTIES_FILE),
+				this.getProperty('url.test', PROPERTIES_FILE)).replace("http:", "https:");
+		this.setProperty(key, urlUpdated, PROPERTIES_FILE);
 	};
 
 	// Gets a product url from the properties file
 	this.getProductUrl = function() {
-		var propertiesFile = __dirname.replace('common', '') + browser.params.propertiesFile;
-		return this.readFile(propertiesFile);
+		console.log(PROPERTIES_FILE);
+		return this.getProperty('url.product', PROPERTIES_FILE);
 	};
+
+/*	this.saveCoupoun = function(key, сoupounCode) {
+		this.setProperty(key, сoupounCode, PROPERTIES_FILE);
+	};*/
 
 	/**
 	 * 
@@ -356,6 +400,24 @@ var commonFunctions = function() {
 	this.contains = function(containing, contained) {
 		console.log('result:' + (containing.indexOf(contained) > -1));
 		return (containing.indexOf(contained) > -1);
+	};
+
+	// Creates a file if not exists
+	this.createFile = function(file) {
+		var protractor = require('protractor');
+		var fs = require('fs');
+
+		var item = protractor.promise.defer();
+		fs.stat(file, function(err, stat) {
+			if (err == null) {
+				console.log('File exists');
+			} else if (err.code == 'ENOENT') {
+				var commonfunctions = new commonFunctions();
+				commonfunctions.writeFile(file, "");
+			} else {
+			}
+		});
+		return item.promise;
 	};
 
 	this.writeFile = function(filePath, text) {

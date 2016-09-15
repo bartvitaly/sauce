@@ -6,33 +6,40 @@
  * @bartvitaly
  */
 
-var common = require('../common/common.js');
-
-var timeout = 120000;
+var timeout = 90000;
 
 exports.config = {
 
 	capabilities : {
 		'newCommandTimeout' : timeout / 1000,
 		'browserName' : 'Browser',
-		'deviceName' : 'nexus3_x86',
+		'deviceName' : 'nexus3_arm',
 		'platformName' : 'Android',
 		'platformVersion' : '5.1.1',
-		'udid' : 'emulator-5554',
-		'autoWebview' : true,
-		'autoWebviewTimeout' : timeout
+		'udid' : 'emulator-5554'
 	},
 
 	seleniumAddress : 'http://localhost:4723/wd/hub',
 
 	allScriptsTimeout : timeout,
 
-	specs : [ '../specs/mobile/checkout_coupon.js' ],
+	specs : [ '../specs/mobile/signup.js' ],
 
 	baseUrl : common.getProperty("url.test"),
 
 	params : {
+
+		paypalEmail : 'qa-paypal@viralstyle.com',
+		paypalPassword : '12345678',
+
+		user : {
+			firstName : 'FName',
+			lastName : 'LName',
+			email : 'user1472879445463@mailinator.com',
+			password : 'strange!'
+		},
 		order : {
+			productUrl : '/user1468255815672/1470940818',
 			size : 'S',
 			quantity : '1',
 			name : ''
@@ -55,7 +62,7 @@ exports.config = {
 			}));
 			browser.ignoreSynchronization = true;
 			browser.manage().timeouts().setScriptTimeout(timeout);
-			browser.manage().timeouts().pageLoadTimeout(timeout);
+			// browser.manage().timeouts().pageLoadTimeout(timeout);
 			browser.manage().timeouts().implicitlyWait(timeout);
 			browser.manage().deleteAllCookies();
 		});

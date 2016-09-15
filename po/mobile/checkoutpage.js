@@ -13,8 +13,8 @@ var checkoutPage = function() {
 	this.url = '/purchase/checkout';
 
 	// Errors
-	this.errorsArrayFull = [ 'Email address', 'First Name', 'Last Name', 'Address', 'City', 'Province/State',
-			'Postal Code', 'Credit card number', 'Expiration month', 'Expiration year', 'CVV' ];
+	this.errorsArrayFull = [ 'Email address', 'First Name', 'Last Name', 'Address', 'City', 'Zip Code', 'State',
+			'Credit card number', 'Expiration month', 'Expiration year', 'CVV' ];
 	this.errorsArrayLoggedIn = [ 'Address', 'City', 'Province/State', 'Postal Code', 'Credit card number',
 			'Expiration month', 'Expiration year', 'CVV' ];
 	this.errors = by.css(".help-block:not(.ng-hide)");

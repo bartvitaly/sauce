@@ -16,8 +16,7 @@ var clientPage = require('../../po/mobile/clientpage.js');
 describe('Login test.', function() {
 	var user = require('../../items/user.js');
 	user = _.clone(user);
-	user.email = browser.params.user.email;
-	user.password = browser.params.user.password;
+	user.email = common.getProperty("user.email");
 
 	it('1. Open login page.', function() {
 		console.log('Open login page.');

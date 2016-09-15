@@ -19,8 +19,6 @@ var trackOrderPage = require('../../po/mobile/trackorderpage.js');
 var common = require('../../common/common.js');
 
 describe('Checkout unregistered user.', function() {
-
-	var orderNumberRetrieved;
 	var shipping = new shippingInfo(user);
 
 	it('1. Opening a product page.', function() {

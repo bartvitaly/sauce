@@ -18,7 +18,9 @@ describe('Registration test.', function() {
 	var user = require('../../items/user.js');
 	user = _.clone(user);
 
+
 	it('1. Open sign up page.', function() {
+		common.setProperty("user.email", user.email);
 		console.log('Open sign up page');
 		browser.get(browser.baseUrl);
 		homePage.openSignUp();

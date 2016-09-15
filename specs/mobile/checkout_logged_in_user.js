@@ -21,13 +21,8 @@ var trackOrderPage = require('../../po/mobile/trackorderpage.js');
 var common = require('../../common/common.js');
 
 describe('checkout logged in user', function() {
-
-	var orderNumberRetrieved;
-
-	user.firstName = browser.params.user.firstName;
-	user.lastName = browser.params.user.lastName;
-	user.email = browser.params.user.email;
-	user.password = browser.params.user.password;
+	user.email = common.getProperty("user.email");
+	user.password = common.getProperty("user.password");
 
 	var shipping = new shippingInfo(user);
 
@@ -76,8 +71,7 @@ describe('checkout logged in user', function() {
 			orderPage.checkOrder(order);
 			orderPage.checkShipping(shipping);
 			common.getTextPromise(orderPage.orderNumber).then(function(orderNumber) {
-				orderNumberRetrieved = orderNumber.replace('YOUR ORDER# ', '');
-				;
+				order.number = orderNumber.replace('YOUR ORDER# ', '');
 			});
 			common.click(orderPage.orderSummary);
 		});
@@ -87,7 +81,6 @@ describe('checkout logged in user', function() {
 		common.waitUrl(browser.baseUrl + orderSummaryPage.url).then(function(urlVerified) {
 			expect(urlVerified).toBe(true);
 			console.log('Check order, shipping details on the order summary page.');
-			order.number = orderNumberRetrieved;
 			orderSummaryPage.checkOrder(order);
 			orderSummaryPage.checkShipping(shipping);
 			common.click(orderSummaryPage.changeAddress);
@@ -99,7 +92,7 @@ describe('checkout logged in user', function() {
 		browser.get(browser.baseUrl + trackOrderPage.url);
 		common.waitUrl(browser.baseUrl + trackOrderPage.url).then(function(urlVerified) {
 			expect(urlVerified).toBe(true);
-			trackOrderPage.track(orderNumberRetrieved, shipping.zipCode);
+			trackOrderPage.track(order.number, shipping.zipCode);
 		});
 	});
 

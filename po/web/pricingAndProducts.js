@@ -4,7 +4,6 @@ var pricingAndProductsPage = function () {
 	this.addAdditionalProductsButton = by.css(".btn-add-product");
 	this.closeButton = by.xpath(".//button[text()='Close']");
 
-	this.nextButton = by.css(".step4"); //.launch-step-pricing .green-meadow.btn-md
 
 	this.clickAddAdditionalProducts = function () {
 		commonFunctions.click(this.addAdditionalProductsButton);
@@ -48,8 +47,13 @@ var pricingAndProductsPage = function () {
 		});
 	};
 
-    this.clickNextButton = function () {
-    	commonFunctions.click(this.nextButton);    	
+	this.clickNextButton = function () {
+		browser.sleep(2000);
+		browser.driver.actions().sendKeys(protractor.Key.SPACE).perform();
+		browser.sleep(2000);
+		browser.driver.actions().sendKeys(protractor.Key.SPACE).perform();
+		browser.sleep(2000);
+    	browser.driver.findElement(by.css(".custom-form-group .btn.green-meadow.btn-md")).click();
     };
 };
 

@@ -23,8 +23,8 @@ describe('Checkout with coupon test.', function() {
 	var discount = 0;
 	var shippingPrice = 0;
 
-	var couponName = browser.params.coupon.code;
-	var couponValue = browser.params.coupon.value;
+	var couponName = common.getProperty("coupon.code");
+	var couponValue = common.getProperty("coupon.value");
 
 	var shipping = new shippingInfo(user);
 

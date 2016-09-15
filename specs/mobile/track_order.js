@@ -14,8 +14,8 @@ var common = require('../../common/common.js');
 
 describe('Track order test.', function() {
 
-	var orderNumber = 'VS201682300000540';
-	var zipCode = '123';
+	var orderNumber = common.getProperty("order.number");
+	var zipCode = common.getProperty("order.zip");
 	var orderNumberRetrieved;
 
 	it('1. Open track order page', function() {
@@ -39,7 +39,6 @@ describe('Track order test.', function() {
 			expect(urlVerified).toBe(true);
 			common.getTextPromise(orderSummaryPage.orderNumber).then(function(orderNumber) {
 				orderNumberRetrieved = orderNumber.replace('ORDER# ', '');
-				;
 			});
 			common.checkText(orderSummaryPage.orderNumber, 'ORDER# ' + orderNumber, true);
 		});

@@ -19,19 +19,14 @@ var trackOrderPage = require('../../po/mobile/trackorderpage.js');
 var common = require('../../common/common.js');
 
 describe('product', function() {
-	var orderNumberRetrieved;
-
 	var shipping = new shippingInfo(user);
 
-	user.firstName = browser.params.user.firstName;
-	user.lastName = browser.params.user.lastName;
-	user.email = browser.params.user.email;
-	user.password = browser.params.user.password;
+	user.email = common.getProperty("user.email");
 	user.phone = '';
 
-	shipping.firstName = browser.params.user.firstName;
-	shipping.lastName = browser.params.user.lastName;
-	shipping.email = browser.params.user.email;
+	shipping.firstName = user.firstName;
+	shipping.lastName = user.lastName;
+	shipping.email = common.getProperty("user.email");
 
 	it('1. Opening a product page.', function() {
 		console.log('Opening a product page');
@@ -63,8 +58,7 @@ describe('product', function() {
 			orderPage.checkOrder(order);
 			orderPage.checkShipping(shipping);
 			common.getTextPromise(orderPage.orderNumber).then(function(orderNumber) {
-				orderNumberRetrieved = orderNumber.replace('YOUR ORDER# ', '');
-				;
+				order.number = orderNumber.replace('YOUR ORDER# ', '');
 			});
 			common.click(orderPage.orderSummary);
 		});
@@ -73,9 +67,9 @@ describe('product', function() {
 	it('4. Check order, shipping details on the order summary page.', function() {
 		common.waitUrl(browser.baseUrl + orderSummaryPage.url).then(function(urlCheck) {
 			expect(urlCheck).toBe(true);
-			console.log(orderNumberRetrieved);
+			console.log(order.number);
 			console.log('Check order, shipping details on the order summary page.');
-			order.number = orderNumberRetrieved;
+			common.setProperty("order.number", order.number);
 			orderSummaryPage.checkOrder(order);
 			orderSummaryPage.checkShipping(shipping);
 			common.click(orderSummaryPage.changeAddress);
@@ -87,7 +81,7 @@ describe('product', function() {
 		browser.get(browser.baseUrl + trackOrderPage.url);
 		common.waitUrl(browser.baseUrl + trackOrderPage.url).then(function(urlVerified) {
 			expect(urlVerified).toBe(true);
-			trackOrderPage.track(orderNumberRetrieved, shipping.zipCode);
+			trackOrderPage.track(order.number, shipping.zipCode);
 		});
 	});
 
