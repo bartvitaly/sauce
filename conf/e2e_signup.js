@@ -6,7 +6,9 @@
  * @bartvitaly
  */
 
-var timeout = 90000;
+var common = require('../common/common.js');
+
+var timeout = 300000;
 
 exports.config = {
 
@@ -28,10 +30,6 @@ exports.config = {
 	baseUrl : common.getProperty("url.test"),
 
 	params : {
-
-		paypalEmail : 'qa-paypal@viralstyle.com',
-		paypalPassword : '12345678',
-
 		order : {
 			size : 'S',
 			quantity : '1',
