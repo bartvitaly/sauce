@@ -34,12 +34,17 @@ before_script:
   - "npm install underscore"
   - "npm install -g android"
   - "webdriver-manager update"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 cache: false
 jdk: oraclejdk7
 language: android
 script:
-  - "nohup xvfb-run appium --session-override --full-reset &"
-  - "sleep 2m"
+  - "protractor conf/e2e_create.js"
+  - "export DISPLAY=:100.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - "nohup xvfb-run -a appium --session-override &"
+  - "sleep 1m"
   - "adb shell input keyevent 82 &"
   - "protractor conf/e2e_checkout.js"
 sudo: false
