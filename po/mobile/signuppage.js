@@ -18,9 +18,9 @@ var signUpPage = function() {
 	// fields
 	this.name = by.css("[name='name']");
 	this.publicName = by.css("[name='publicName']");
-	this.email = by.css("[id='register_email_input']");
-	this.password = by.css("[id='register_password_input']");
-	this.passwordConfirm = by.css("[name='passwordConfirm']");
+	this.email = by.css("[id='register_email_input'], [ng-model*='register.email']");
+	this.password = by.css("[id='register_password_input'], [ng-model*='register.password']");
+	this.passwordConfirm = by.css("[name='passwordConfirm'], [ng-model*='register.passwordC']");
 
 	// static elements
 	this.termsCheckbox = by.css("[ng-class*='terms'] label");
