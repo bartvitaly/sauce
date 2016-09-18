@@ -6,14 +6,16 @@
  * @bartvitaly
  */
 
-var timeout = 90000;
+var common = require('../common/common.js');
+
+var timeout = 600000;
 
 exports.config = {
 
 	capabilities : {
 		'newCommandTimeout' : timeout / 1000,
 		'browserName' : 'Browser',
-		'deviceName' : 'nexus3_arm',
+		'deviceName' : 'test',
 		'platformName' : 'Android',
 		'platformVersion' : '5.1.1',
 		'udid' : 'emulator-5554'
@@ -26,18 +28,6 @@ exports.config = {
 	specs : [ '../specs/mobile/signup.js' ],
 
 	baseUrl : common.getProperty("url.test"),
-
-	params : {
-
-		paypalEmail : 'qa-paypal@viralstyle.com',
-		paypalPassword : '12345678',
-
-		order : {
-			size : 'S',
-			quantity : '1',
-			name : ''
-		},
-	},
 
 	frameworks : 'jasmine2',
 
@@ -53,7 +43,7 @@ exports.config = {
 				savePath : newFolder,
 				consolidateAll : true
 			}));
-			browser.ignoreSynchronization = false;
+			browser.ignoreSynchronization = true;
 			browser.manage().timeouts().setScriptTimeout(timeout);
 			browser.manage().timeouts().pageLoadTimeout(timeout);
 			browser.manage().timeouts().implicitlyWait(timeout);

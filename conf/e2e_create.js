@@ -1,6 +1,6 @@
 var common = require('../common/common.js');
 
-var timeout = 120000;
+var timeout = 540000;
 exports.config = {
 
 	allScriptsTimeout : timeout,
@@ -9,7 +9,7 @@ exports.config = {
 		'browserName' : 'firefox'
 	},
 	framework : 'jasmine',
-	specs : [ '../specs/web/createProductWithUpsell.js' ],
+	specs : [ '../specs/web/createProduct_e2e.js' ],
 
 	params : {
 		user : {
