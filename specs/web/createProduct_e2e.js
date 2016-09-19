@@ -10,9 +10,10 @@ describe("Smoke test", function() {
 	var random;
 
 	beforeAll(function() {
-//browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
-		//browser.driver.manage().window().maximize();
 		browser.driver.get(browser.baseUrl + "/design.beta#designer");
+		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
+		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
+		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
 	});
 
 	it("test", function() {
@@ -97,19 +98,15 @@ describe("Smoke test", function() {
 
 	it("Choose a product ", function() {
 		console.log('choose a product ');
-		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
-		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
-		browser.actions().keyDown(protractor.Key.CONTROL).sendKeys(protractor.Key.SUBTRACT).keyUp(protractor.Key.CONTROL).perform();
+		element(by.css('#mCSB_2_container>div:nth-of-type(1)')).click();
 		browser.actions().mouseDown(element(by.xpath(".//*[@id='mCSB_2_dragger_vertical']/div"))).mouseMove({x:0, y:100}).mouseUp().perform();
-		browser.sleep(2000);
-		designBetaPage.chooseProduct();
-		browser.sleep(2000);
+		designBetaPage.chooseAProduct();
 	});
 
 	it("Add Additional products", function() {
 		console.log('click add text button');
 		designBetaPage.clickAddTextButton();
-
+		designBetaPage.clickXOnForm();
 		designBetaPage.clickNextButton();
 		pricingAndProducts.clickNextButton();
 	});
@@ -125,10 +122,11 @@ describe("Smoke test", function() {
 
 		launchPage.typeCampaignTitle(Math.floor(Date.now() / 1000));
 		launchPage.typeDescription(Math.floor(Date.now() / 1000));
-
+		browser.sleep(5000);
 		// Save a product url to a file
 		launchPage.getURL().then(function(url) {
-			common.saveProductUrl(url);
+			console.log("url: " + url)
+			common.saveProductUrl("url.product",url);
 		});
 
 		launchPage.clickAcceptTermsCheckBox();
@@ -141,7 +139,6 @@ describe("Smoke test", function() {
 	function productCategory(category, products) {
 		this.category = category;
 		this.products = products;
-	}
-	;
+	};
 
 });

@@ -1,7 +1,7 @@
 var commonFunctions = require('../../common/commonWeb.js');
 
 var designBetaPage = function () {
-	this.shortSleevesCategory = by.xpath("(.//*[text()='Short Sleeves'])[1])");
+	this.shortSleevesCategory = by.xpath("(.//*[text()='Short Sleeves'])[1]");
 	this.unisexCottonTeeProduct = by.xpath(".//*[text()='Unisex Cotton Tee']/following-sibling::div[@class='row']//button[text()='Select']");
 
 	this.addTextButton = by.css(".add_item_text");
@@ -27,6 +27,7 @@ var designBetaPage = function () {
 	};
 
 	this.chooseAProduct = function(product){
+		
 		commonFunctions.click(this.unisexCottonTeeProduct);
 /*		element(by.css('#mCSB_2_container>div:nth-of-type(1)')).click();
 		browser.driver.actions().sendKeys(protractor.Key.PAGE_DOWN).perform();

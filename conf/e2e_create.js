@@ -33,6 +33,9 @@ exports.config = {
 				consolidateAll : true
 			}));
 			browser.ignoreSynchronization = true;
+			var width = 768;
+			var height = 548;
+			browser.driver.manage().window().setSize(width, height);
 			browser.manage().timeouts().setScriptTimeout(timeout);
 			browser.manage().timeouts().pageLoadTimeout(timeout);
 			browser.manage().timeouts().implicitlyWait(timeout);
