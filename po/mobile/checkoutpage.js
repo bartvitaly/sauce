@@ -20,25 +20,25 @@ var checkoutPage = function() {
 	this.errors = by.css(".help-block:not(.ng-hide)");
 
 	// Customer information
-	this.email = by.css("[id='cust_email_input']");
+	this.email = by.css("[id='cust_email_input'], [ng-model*='customer.email']");
 
 	// Shipping information
-	this.firstName = by.css("[id='first_name_input']");
-	this.lastName = by.css("[id='last_name_input']");
-	this.address = by.css("[id='address_input']");
-	this.aptSuite = by.css("[id='apt_input']");
-	this.city = by.css("[id='city_input']");
-	this.stateInput = by.css("input[id='state_input']");
-	this.stateSelect = by.css("select[id='state_input']");
-	this.zipCode = by.css("[name='zip']");
-	this.country = by.css("[name='country']");
-	this.phone = by.css("[name='mobile']");
+	this.firstName = by.css("[id='first_name_input'], [ng-model*='firstName']");
+	this.lastName = by.css("[id='last_name_input'], [ng-model*='lastName']");
+	this.address = by.css("[id='address_input'], [ng-model*='address']");
+	this.aptSuite = by.css("[id='apt_input'], [ng-model*='apt']");
+	this.city = by.css("[id='city_input'], [ng-model*='city']");
+	this.stateInput = by.css("input[id='state_input'], [ng-model*='state']");
+	this.stateSelect = by.css("select[id='state_input'], select[ng-model*='state']");
+	this.zipCode = by.css("[name='zip'], [ng-model*='zip']");
+	this.country = by.css("[name='country'], [ng-model*='country']");
+	this.phone = by.css("[name='mobile'], [ng-model*='mobile']");
 
 	// Payment information
-	this.cardNumber = by.css("[id='cc_num_input']");
-	this.expMonth = by.css("[id='cc_month_input']");
-	this.expYear = by.css("[id='cc_year_input']");
-	this.cvv = by.css("[id='cc_cvv_input']");
+	this.cardNumber = by.css("[id='cc_num_input'], [ng-model*='cc_num']");
+	this.expMonth = by.css("[id='cc_month_input'], [ng-model*='expiry_mm']");
+	this.expYear = by.css("[id='cc_year_input'], [ng-model*='expiry_yy']");
+	this.cvv = by.css("[id='cc_cvv_input'], [ng-model*='cvc']");
 
 	// Shopping card
 	this.cardItems = ".item-basket";
