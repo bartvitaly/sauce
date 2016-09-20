@@ -4,7 +4,7 @@ var designBetaPage = function () {
 	this.shortSleevesCategory = by.xpath("(.//*[text()='Short Sleeves'])[1]");
 	this.unisexCottonTeeProduct = by.xpath(".//*[text()='Unisex Cotton Tee']/following-sibling::div[@class='row']//button[text()='Select']");
 
-	this.addTextButton = by.css(".add_item_text");
+	this.addTextButton = by.css(".glyphicons.text_bigger");
 	this.editTextInput = by.css('.form-control.text-update');
 	this.XOnForm = by.css('.glyphicons.remove_2.glyphicons-12.pull-right');
 	this.showBackButton = by.xpath('.//*[@class="box-thumb btn-show-back pull-left"]/span[contains(text(),"Back")]');
