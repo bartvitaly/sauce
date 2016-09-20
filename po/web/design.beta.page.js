@@ -4,6 +4,8 @@ var designBetaPage = function () {
 	this.shortSleevesCategory = by.xpath("(.//*[text()='Short Sleeves'])[1]");
 	this.unisexCottonTeeProduct = by.xpath(".//*[text()='Unisex Cotton Tee']/following-sibling::div[@class='row']//button[text()='Select']");
 
+	this.addAtworkButton = by.css(".glyphicons.picture");
+	this.firstAtworkInTable = by.xpath("(.//*[@class='row clearfix']//img)[1]");
 	this.addTextButton = by.css(".glyphicons.text_bigger");
 	this.editTextInput = by.css('.form-control.text-update');
 	this.XOnForm = by.css('.glyphicons.remove_2.glyphicons-12.pull-right');
@@ -74,6 +76,11 @@ var designBetaPage = function () {
 
     this.clickClearAllButton  = function() {
     	commonFunctions.click(this.clearAll);
+    };
+
+    this.addAtwork = function() {
+    	commonFunctions.click(this.addAtworkButton);
+    	commonFunctions.click(this.firstAtworkInTable);
     };
 }
 

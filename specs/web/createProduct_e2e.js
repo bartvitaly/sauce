@@ -105,7 +105,8 @@ describe("Smoke test", function() {
 
 	it("Add Additional products", function() {
 		console.log('click add text button');
-		designBetaPage.clickAddTextButton();
+		//designBetaPage.clickAddTextButton();
+		designBetaPage.addAtwork();
 		designBetaPage.clickXOnForm();
 		designBetaPage.clickNextButton();
 		pricingAndProducts.clickNextButton();
