@@ -57,4 +57,6 @@ script:
   - "sleep 1m"
   - "adb shell input keyevent 82 &"
   - "protractor conf/e2e_checkout.js"
-sudo: false
+sudo: required
+services:
+  - docker
